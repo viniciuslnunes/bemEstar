@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/usuarios', 'UsuariosController@index');
-Route::get('/usuarios/adicionar', 'UsuariosController@create');
+Route::get('/clientes', 'ClientesController@index');
+Route::get('/clientes/adicionar', 'ClientesController@create');
+Route::post('/clientes/adicionar', 'ClientesController@store');
+
 

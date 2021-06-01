@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use Illuminate\Http\Request;
 
-class UsuariosController extends Controller
+class ClientesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,7 +40,15 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Request no name do input do create.blade.php
+        $nome = $request->nome;
+
+        //Verificar se há retorno na busca da tabela
+        var_dump($nome);
+        // $cliente = new Cliente();
+        // $cliente->nome = $nome;
+        // var_dump($cliente->save());
+
     }
 
     /**
