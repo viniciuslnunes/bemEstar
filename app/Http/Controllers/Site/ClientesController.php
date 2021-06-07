@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Site;
 use App\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ClientesController extends Controller
 {
@@ -12,14 +12,13 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $series = [
-            'Grey\'s Anatomy',
-            'Lost',
-            'Agents of SHIELD'
-        ];
-        return view('usuarios.index' , compact('series'));
+        $clientes = Cliente::query()->orderBy("nome")->get();
+
+        $mensagem = $request->session()->get("mensagem");
+
+        return view("site.clientes.index" , compact("clientes", "mensagem"));
     }
 
     /**
@@ -29,7 +28,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        return view("site.clientes.create");
     }
 
     /**
@@ -40,15 +39,10 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //Request no name do input do create.blade.php
-        $nome = $request->nome;
+        $clientes = Cliente::create($request->all());
+        $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
 
-        //Verificar se há retorno na busca da tabela
-        var_dump($nome);
-        // $cliente = new Cliente();
-        // $cliente->nome = $nome;
-        // var_dump($cliente->save());
-
+        return redirect("/clientes");
     }
 
     /**
@@ -91,8 +85,15 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->delete();
+
+        // Cliente::destroy($request->id);
+        // $request->session()->flash('mensagem', "Cliente removido com sucesso");
+    
+        return redirect('/clientes');
+    
     }
 }

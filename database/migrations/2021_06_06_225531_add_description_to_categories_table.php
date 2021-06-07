@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriarTabelaClientes extends Migration
+class AddDescriptionToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CriarTabelaClientes extends Migration
      */
     public function up()
     {
-        Schema::create('clientes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nome');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->string('description')->after('name');
         });
     }
 
@@ -26,6 +25,8 @@ class CriarTabelaClientes extends Migration
      */
     public function down()
     {
-        Schema::drop('clientes');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropColumn('description');
+        });
     }
 }

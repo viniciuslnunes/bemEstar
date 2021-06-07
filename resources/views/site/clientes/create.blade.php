@@ -1,9 +1,8 @@
-@extends('layout')
-@section('cabecalho')
+@extends('layouts.site')
+@section('header')
             <h1>Adicionar Cliente</h1>
         @endsection
-@section('conteudo')
-
+@section('content')
                 <form method="post">
                 @csrf
                 <div class="form-group">
