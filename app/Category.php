@@ -22,4 +22,10 @@ class Category extends Model
     public function assessments(){
         return $this->hasMany(Assessment::class);
     }
+
+    public function clients() {
+        return $this->hasMany(Client::class);
+    }
+
+
 }

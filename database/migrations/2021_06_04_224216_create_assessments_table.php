@@ -15,10 +15,19 @@ class CreateAssessmentsTable extends Migration
     {
         Schema::create('assessments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained();
-            $table->string('name'); 
-            $table->text('description');
+
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+
+
+
+            $table->string('question'); 
+            $table->text('answer');
             $table->boolean('exclusive');
+            $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();
 

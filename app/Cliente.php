@@ -9,4 +9,12 @@ class Cliente extends Model {
     // protected $table = 'clientes';
     public $timestamps = false;
     protected $fillable = ['nome'];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function assessments() {
+        return $this->hasMany(Assessment::class);
+    }
 }   

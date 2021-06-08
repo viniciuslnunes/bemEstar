@@ -49,7 +49,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('site.category.show', ['category' => $category->load('assessments')]);
+        return view('site.category.show', ['categories' => $category->load('assessments')]);
     }
 
     /**

@@ -14,11 +14,11 @@
             <article class="card__product">
                 <a href="products-detail.php">
                     <div class="card__cover">
-                        <img src="{{asset($category->image)}}" style="width: 322px;">
+                        <img src="{{asset($categories->image)}}" style="width: 322px;">
                     </div>
                     <header class="card__product-header">
-                        <h2 class="title-medium">{{$category->name}}</h2>
-                        <p>{{$category->description}}</p>
+                        <h2 class="title-medium">{{$categories->name}}</h2>
+                        <p>{{$categories->description}}</p>
                     </header>
                 </a>
             </article>
@@ -27,10 +27,17 @@
 
         <section class="products__list">
             <header>
-                <h2 class="title-large">Cum quadra ridetis, omnes visuses imitari regius, brevis brodiumes. </h2>
-                <p>Ususs favere! Tabes grandis palus est. Sunt mensaes magicae fatalis, placidus genetrixes. Cum musa unda, omnes amores attrahendam pius, noster particulaes. </p>
+                @if($categories->status === 1)
+                <div style="color:white;">Status: <span style="color:green;">Finalizado</span></div>
+                @else
+                <div style="color:white;">Status: <span style="color:yellow;">Não finalizado</span></div>
+                @endif
+                <p>Avaliado por: Vinicius.
+                
+                <br>
+                grandis palus est. Sunt mensaes magicae fatalis, placidus genetrixes. Cum musa unda, omnes amores attrahendam pius </p>
             </header>
-            @foreach($category->assessments as $assessment)
+            @foreach($categories->assessments as $assessment)
             <article class="product">
                 <a class="clickable-area" href="javascript:;">
                     <header class="product__header">
