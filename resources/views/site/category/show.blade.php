@@ -41,7 +41,9 @@
             <article class="product">
                 <a class="clickable-area" href="javascript:;">
                     <header class="product__header">
-                        <h3 class="title-medium">{{$assessment->name}}</h3>
+                        <h3 class="title-medium">{{$assessment->name}} </h3>
+                        <h3 class="title-medium">{{$assessment->client->name}} </h3>
+
                         <!-- Tooggle item -->
                         <span class="collapse__open"></span>
                     </header>

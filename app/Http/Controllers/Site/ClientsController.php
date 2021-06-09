@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Site;
-use App\Cliente;
+
+use App\Client;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class ClientesController extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +15,11 @@ class ClientesController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = Cliente::query()->orderBy("nome")->get();
+        $clientes = Client::all();
 
         $mensagem = $request->session()->get("mensagem");
 
-        return view("site.clientes.index" , compact("clientes", "mensagem"));
+        return view("site.clients.index" , compact("clientes", "mensagem"));
     }
 
     /**
@@ -28,7 +29,7 @@ class ClientesController extends Controller
      */
     public function create()
     {
-        return view("site.clientes.create");
+        return view("site.clients.create");
     }
 
     /**
@@ -39,7 +40,7 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        $clientes = Cliente::create($request->all());
+        $clientes = Client::create($request->all());
         $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
 
         return redirect("/clientes");
@@ -87,7 +88,7 @@ class ClientesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $cliente = Cliente::findOrFail($id);
+        $cliente = Client::findOrFail($id);
         $cliente->delete();
 
         // Cliente::destroy($request->id);

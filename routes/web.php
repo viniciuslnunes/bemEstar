@@ -17,15 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/clientes', 'ClientesController@index')->name('site.clientes');
-Route::get('/clientes/adicionar', 'ClientesController@create')->name('site.clientes.adicionar');
-Route::post('/clientes/{id}, ClientesController@destroy');
+Route::get('/clientes', 'ClientsController@index')->name('site.clientes');
+Route::get('/clientes/criar', 'ClientsController@create')->name('site.clientes.criar');
+
+
+Route::get('/clientes/adicionar', 'ClientsController@create')->name('site.clientes.adicionar');
+Route::post('/clientes/{id}, ClientsController@destroy');
 
 Route::get('/categorias', 'CategoryController@index')->name('site.categorias');
 Route::get('/categorias/{category}', 'CategoryController@show')->name('site.categorias.avaliacoes');
 
-Route::get('/atendimento', 'AssessmentsController@index');
-Route::get('/atendimento/adicionar', 'AssessmentsController@create');
+Route::get('/avaliacoes', 'AssessmentsController@index')->name('site.avaliacoes');
+Route::get('/avaliacoes/criar', 'AssessmentsController@create')->name('site.avaliacoes.criar');
 });
 
 

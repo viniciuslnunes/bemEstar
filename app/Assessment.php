@@ -24,4 +24,12 @@ class Assessment extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function answersAssessments(){
+        return $this->HasMany(AnswersAssessment::class);
+    }
+
+    public function questsAssessments(){
+        return $this->HasMany(QuestsAssessment::class);
+    }
+
 }
