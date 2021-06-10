@@ -22,13 +22,18 @@ Route::get('/clientes/criar', 'ClientsController@create')->name('site.clientes.c
 
 
 Route::get('/clientes/adicionar', 'ClientsController@create')->name('site.clientes.adicionar');
+Route::post('/clientes/store', 'ClientsController@store')->name('site.clientes.store');
 Route::post('/clientes/{id}, ClientsController@destroy');
 
-Route::get('/categorias', 'CategoryController@index')->name('site.categorias');
-Route::get('/categorias/{category}', 'CategoryController@show')->name('site.categorias.avaliacoes');
+Route::get('/formularios', 'FormsController@index')->name('site.formularios');
+Route::get('/formularios/criar', 'FormsController@create')->name('site.formularios.criar');
+Route::post('/formularios/store', 'FormsController@store')->name('site.formularios.store');
+
 
 Route::get('/avaliacoes', 'AssessmentsController@index')->name('site.avaliacoes');
 Route::get('/avaliacoes/criar', 'AssessmentsController@create')->name('site.avaliacoes.criar');
+Route::post('/avaliacoes/store', 'AssessmentsController@store')->name('site.avaliacoes.store');
+
 });
 
 

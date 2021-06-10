@@ -16,10 +16,11 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('site.clientes') }}">
+        <form method="POST" action="{{ route('site.clientes.store') }}">
+        @csrf
             <div class="row">
                 <div class="col">
-                    @csrf
+                
                     <label for="nome_fantasia">Nome da empresa:</label>
                     <input type="text" class="form-control" name="nome_empresa" />
                 </div>
@@ -30,8 +31,8 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <label for="user">Caputar usuário responsável pelo relacionamento</label>
-                    <input type="text" class="form-control" name="user" />
+                    <label for="user">Nome do responsável:</label>
+                    <input type="text" class="form-control" name="nome_responsavel" />
                 </div>
                 <div class="col">
                     <label for="email">E-mail</label>

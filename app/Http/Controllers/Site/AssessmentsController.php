@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Category;
-use App\Http\Controllers\Controller;
+use App\Assessment;
+use App\Client;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
-class CategoryController extends Controller
+class AssessmentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +15,11 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        return view('site.category.index', [
-            'categories' => Category::all(),
-        ]);
+    {
+        $assessments = Assessment::all();
+        // $clientes = Client::all();
+
+        return view("site.assessments.index" , compact("assessments"));
     }
 
     /**
@@ -27,7 +29,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('site.category.create');
+        return view("site.assessments.create");
+
     }
 
     /**
@@ -38,18 +41,33 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'form_id' => ['required', 'integer'],
+            'client_id' => ['required', 'integer'],
+            'question' => ['required', 'max:150'],
+            'answer' => ['required', 'max:150'],
+            'description' => ['required', 'max:150'],
+            'status' => ['required', 'booelean'],
+        ]);
+
+        $avaliacoes = $request->all();
+        Assessment::create($avaliacoes);
+        return redirect()->route('site.avaliacoes')->with('success', 'Avaliação cadastrada com sucesso');
+
+        // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
+
+        return redirect("/avaliacoes");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  $categry
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        return view('site.category.show', ['categories' => $category->load(['assessments', 'client'])]);
+        //
     }
 
     /**

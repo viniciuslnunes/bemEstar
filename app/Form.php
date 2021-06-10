@@ -5,19 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Form extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
-        'image'
+        'nome_formulario',
+        'item'
     ];
-
-    protected $dates = [
-        'deleted_at'
-    ];
-
 
     public function assessments(){
         return $this->hasMany(Assessment::class);
@@ -25,6 +20,10 @@ class Category extends Model
 
     public function clients() {
         return $this->hasMany(Client::class);
+    }
+
+    public function questForm() {
+        return $this->hasMany(QuestForm::class);
     }
 
 

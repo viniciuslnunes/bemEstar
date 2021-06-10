@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Client;
+use App\Form;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class ClientsController extends Controller
+class FormsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $clientes = Client::all();
+        $forms = Form::all();
 
-        $mensagem = $request->session()->get("mensagem");
-
-        return view("site.clients.index" , compact("clientes", "mensagem"));
+        return view(
+            'site.form.index',
+            compact("forms")
+        );
     }
 
     /**
@@ -29,7 +30,7 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view("site.clients.create");
+        return view('site.form.create');
     }
 
     /**
@@ -41,16 +42,20 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'nome_empresa' => ['required', 'unique:clients', 'max:100'],
-            'cnpj' => ['required', 'unique:clients', 'max:14'],
-            'nome_responsavel' => ['required', 'max:100'],
-            'email' => ['required',  'max:100'],
-            'celular' => ['required', 'max:11'],
+            'nome_formulario' => ['required', 'unique:forms', 'max:100'],          
         ]);
 
-        $clientes = $request->all();
-        Client::create($clientes);
-        return redirect()->route('site.clientes')->with('success', 'Cliente cadastrado com sucesso');
+        $forms = $request->all();        
+        $form = Form::create(['nome_formulario' => $request->get('nome_formulario'),
+        'item' => 'none']);
+        
+        foreach($request->get('quest') as $quest){            
+            $form->questForm()->create([
+                'quest' => $quest
+            ]);
+        }
+        
+        return redirect()->route('site.clientes')->with('success', 'Formulário cadastrado com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
 
@@ -60,12 +65,12 @@ class ClientsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  $categry
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Form $form)
     {
-        //
+        return view('site.form.show', ['forms' => $form->load(['assessments', 'client'])]);
     }
 
     /**
@@ -97,15 +102,8 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $cliente = Client::findOrFail($id);
-        $cliente->delete();
-
-        // Cliente::destroy($request->id);
-        // $request->session()->flash('mensagem', "Cliente removido com sucesso");
-    
-        return redirect('/clientes');
-    
+        //
     }
 }

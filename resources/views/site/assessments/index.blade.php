@@ -6,22 +6,19 @@
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Cliente</th>
-            <th scope="col">Avaliado por</th>
-            <th scope="col">Formulario</th>
-            <th scope="col">Data</th>
-            <th scope="col">Status</th>
+            <th scope="col">ID.</th>
+            <th scope="col">Avaliação</th>
+            <th scope="col">Item</th>
             <th scope="col">Ações</th>
-            <th scope="col">Relatórios</th>
+  
         </tr>
     </thead>
     <tbody>
-        @foreach($clientes as $cliente)
+        @foreach($assessments as $assessment)
         <tr>
-            <td>{{$cliente->id}}</td>
-            <td>{{$cliente->razao_social}}</td>
-            <td>{{$cliente->nome_fantasia}}</td>
-            <td>{{$cliente->nome_responsavel}}</td>
+            <td>1</td>
+            <td>Arnaldo Lafuente</td>
+            <td>avaliacao</td>
             <td>
                 <form action="{{ route('site.clientes')}}" method="post">
                     <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Detalhes</a>

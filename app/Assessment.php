@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Assessment extends Model
 {
     use SoftDeletes;
+     protected $table = 'assessments';
+
 
     protected $fillable = [
-        'name', 
+        
+        'form_id',
+        'client_id',
+        'question',
+        'answer', 
         'description',
-        'exclusive'
+        'status',
     ];
 
     protected $dates = [
@@ -20,8 +26,8 @@ class Assessment extends Model
     ];
 
 
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function form(){
+        return $this->belongsTo(Form::class);
     }
 
     public function answersAssessments(){

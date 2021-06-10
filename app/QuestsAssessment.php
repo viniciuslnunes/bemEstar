@@ -10,7 +10,7 @@ class QuestsAssessment extends Model
         'quests_assessments'
     ];
 
-    public function assessments(){
-        return $this->belongsTo(Assessment::class);
+    public function form(){
+        return $this->belongsTo(Form::class);
     }
 }

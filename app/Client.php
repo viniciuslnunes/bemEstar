@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model {
     // Não é necesário utilizar o atributo abaixo pois a classe reconhece conforme o primeiro comentário
     // protected $table = 'clientes';
-    public $timestamps = false;
-    protected $fillable = ['nome'];
+    public $timestamps = true;
 
-    public function category() {
-        return $this->belongsTo(Category::class);
+    protected $fillable = [
+        //  'user_id', 
+    'nome_empresa', 'cnpj', 'email', 
+    'nome_responsavel', 'celular'
+    ];
+
+    public function form() {
+        return $this->belongsTo(Form::class);
     }
 
     public function assessments() {

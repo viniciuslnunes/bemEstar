@@ -16,14 +16,19 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('user_id');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->string('nome_empresa', 150);
+            // $table->unsignedBigInteger('form_id');
+            // $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
+
+            $table->string('nome_empresa', 100);
             $table->string('cnpj', 14);
-            $table->string('nome_responsavel', 150);
+            $table->string('nome_responsavel', 100);
             $table->string('email', 100);
             $table->string('celular', 11);
+            //Adicionar imagem posteriormente
+            // $table->string('imagem', 11);
             $table->timestamps();
         });
     }

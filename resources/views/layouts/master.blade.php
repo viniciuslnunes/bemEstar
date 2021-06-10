@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>       
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -21,6 +21,65 @@
     <title>@yield('title')</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
+    <script src="/js/form.js" defer></script>
+    <script>
+    
+
+const quests = [];
+
+function exclusaoQuest(quest_value) {
+    document
+        .querySelectorAll("span.quest")
+        .forEach((quest, index) => {
+            if (quest.innerText === quest_value) {
+                document
+                    .querySelectorAll("#container_quest li")
+                [index].remove();
+                quests.splice(index, 1);
+            }
+        });
+}
+
+function createLine(quest_value) {
+    const container_quest =
+        document.querySelector("#container_quest");
+    const li = document.createElement("li");
+    const span = document.createElement("span");
+    const button_excluir = document.createElement("button");
+    button_excluir.innerText = "Excluir";
+    button_excluir.onclick = () => exclusaoQuest(quest_value);
+    span.innerText = quest_value;
+    span.className = "quest";
+    li.appendChild(span);
+    li.appendChild(button_excluir);
+    container_quest.appendChild(li);
+}
+
+function createQuest() {
+    const quest_value = document.querySelector(
+        'input[name="quest"]',
+    ).value;
+    quests.push(quest_value);
+    createLine(quest_value);
+    document.querySelector('input[name="quest"]').value = "";
+}
+
+async function submitForm() {
+    const name_form = document.querySelector(
+        'input[name="form_name"]',
+    ).value;
+    const name_user =
+        document.querySelector("#name_user").innerText;
+    const body = { name_form, name_user, quests };
+    const res = await (
+        await fetch("http://localhost:8000/clientes/store", {
+            method: "POST",
+            body: JSON.stringify(body),
+        })
+    ).json();
+}
+    </script>
+
 </head>
 
 <body>
@@ -40,16 +99,19 @@
                     <a class="nav-link" href="{{ route('site.clientes') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.clientes.criar') }}">Cadastrar cliente</a>
+                    <a class="nav-link" href="{{ route('site.clientes.criar') }}">Cadastrar Cliente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.categorias') }}">Categorias</a>
+                    <a class="nav-link" href="{{ route('site.formularios') }}">Formulários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('site.formularios.criar') }}">Novo Formulário</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('site.avaliacoes') }}">Avaliações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.avaliacoes.criar') }}">Cadastrar avaliação</a>
+                    <a class="nav-link" href="{{ route('site.avaliacoes.criar') }}">Nova Avaliação</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('site.clientes') }}"
@@ -69,6 +131,8 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}" type="text/js"></script>
+    
+    
 </body>
 
 </html>
