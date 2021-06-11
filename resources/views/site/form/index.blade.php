@@ -8,7 +8,6 @@
         <tr>
             <th scope="col">ID.</th>
             <th scope="col">Formulario</th>
-            <th scope="col">Item</th>
             <th scope="col">Ações</th>
   
         </tr>
@@ -18,7 +17,6 @@
         <tr>
             <td>{{$form->id}}</td>
             <td>{{$form->nome_formulario}}</td>
-            <td>{{$form->item}}</td>
             <td>
                 <form action="{{ route('site.clientes')}}" method="post">
                     <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Detalhes</a>

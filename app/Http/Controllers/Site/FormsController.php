@@ -65,8 +65,6 @@ class FormsController extends Controller
         return redirect()->route('site.clientes')->with('success', 'Formulário cadastrado com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
-
-        return redirect("/clientes");
     }
 
     /**

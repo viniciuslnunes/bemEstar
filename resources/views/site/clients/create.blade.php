@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', 'Bem estar - Criar cliente')
+
 @section('content')
 <div class="card">
     <div class="card-header bg-dark">

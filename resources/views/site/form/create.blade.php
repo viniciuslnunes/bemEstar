@@ -26,7 +26,7 @@
                 <div class="col">
 
                     <label for="nome_formulario">Nome do formulário</label>
-                    <input type="text" name="nome_formulario">
+                    <input type="text" class="form-control" name="nome_formulario">
 
                 </div>
 
@@ -37,10 +37,10 @@
                     <input type="text" class="form-control" name="cnpj" />
                 </div> -->
             </div>
-            <div class="inputs">
+            <div class="inputs mb-4">
                 <label for="">questões</label>
                 <div id="container-inputs">
-                    <input type="text" id="input_quest" />
+                    <input type="text" id="input_quest" class="form-control" />
                 </div>
             </div>
             <div class="d-flex flex-nowrap">

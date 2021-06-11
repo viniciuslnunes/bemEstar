@@ -13,13 +13,14 @@ class ClientsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $clientes = Client::all();
+        // dd($clientes);
 
-        $mensagem = $request->session()->get("mensagem");
+        // $mensagem = $request->session()->get("mensagem");
 
-        return view("site.clients.index" , compact("clientes", "mensagem"));
+        return view("site.clients.index" , compact("clientes"));
     }
 
     /**
@@ -54,7 +55,6 @@ class ClientsController extends Controller
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
 
-        return redirect("/clientes");
     }
 
     /**
@@ -65,7 +65,9 @@ class ClientsController extends Controller
      */
     public function show($id)
     {
-        //
+        $clientes = Client::findOrFail($id);
+        $formularios = Client::find($id)->assessments;
+        return view('site.clients.show', compact('clientes', 'assessments'));
     }
 
     /**
@@ -76,7 +78,8 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clientes = Client::findOfFail($id);
+        return view('site.clients.edit', compact('clientes'));
     }
 
     /**
@@ -88,7 +91,17 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $clientes = Client::findOfFail($id);
+        request()->validate([
+            'nome_empresa'      => ['required',  'max:100'],
+            'cnpj'              => ['required', 'unique:clientes', 'max:14'],
+            'nome_responsavel'  => ['required', 'max:100'],
+            'email'             => ['required', 'unique:clientes', 'max:100'],
+            'celular'           => ['required', 'max:11'],
+        ]);
+        $clientes->update($request->all());
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso');
+
     }
 
     /**
@@ -101,11 +114,6 @@ class ClientsController extends Controller
     {
         $cliente = Client::findOrFail($id);
         $cliente->delete();
-
-        // Cliente::destroy($request->id);
-        // $request->session()->flash('mensagem', "Cliente removido com sucesso");
-    
-        return redirect('/clientes');
-    
+        return redirect()->route('clients.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }
