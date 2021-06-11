@@ -42,19 +42,26 @@ class FormsController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'nome_formulario' => ['required', 'unique:forms', 'max:100'],          
+            'nome_formulario' => ['required', 'unique:forms', 'max:100'],
         ]);
 
-        $forms = $request->all();        
-        $form = Form::create(['nome_formulario' => $request->get('nome_formulario'),
-        'item' => 'none']);
+        $forms = $request->all();
+        $form = Form::create([
+            'nome_formulario' => $request->get('nome_formulario'),
+            'item' => 'none'
+        ]);
+
+        // $array_quest = array();
+        // foreach ($request->get('quest') as $quest) {
+        //     array_push($array_quest, $quest);
+        // }
         
-        foreach($request->get('quest') as $quest){            
+        foreach ($request->get('quest') as $quest) {
             $form->questForm()->create([
                 'quest' => $quest
             ]);
         }
-        
+
         return redirect()->route('site.clientes')->with('success', 'Formulário cadastrado com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
