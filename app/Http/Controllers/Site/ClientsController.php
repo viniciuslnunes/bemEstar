@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Client;
+use App\Assessment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -63,10 +64,12 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+        $id = 1;
         $clientes = Client::findOrFail($id);
-        $formularios = Client::find($id)->assessments;
+        // dd($clientes);
+        $assessments = Assessment::all();
         return view('site.clients.show', compact('clientes', 'assessments'));
     }
 
