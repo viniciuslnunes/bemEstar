@@ -30,16 +30,14 @@
                     <td colspan="4" style="text-align: center;">Avaliações</td>
                 </tr>
                 <tr>
-                    <td>#</td>
-                    <td>Proposta feita em</td>
-                    <td>Total R$</td>
+                    <td>ID</td>
+                    <td>Avaliação feita em</td>
                     <td>Status</td>
                 </tr>
               
                 <tr>
-                    <td><a href="#">id1</a></td>
+                    <td><a href="#">1</a></td>
                     <td>26/05/2020</td>
-                    <td>1000</td>
                     <td>
                     </td>
                 </tr>

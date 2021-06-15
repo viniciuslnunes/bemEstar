@@ -51,11 +51,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('site.avaliacoes.criar') }}">Nova Avaliação</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.clientes') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                </li>
                 <form id="logout-form" action="{{ route('site.clientes') }}" method="POST" style="display: none;">
                     @csrf
                 </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Client;
 use App\Assessment;
+use App\Form;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -68,9 +69,7 @@ class ClientsController extends Controller
     {
         $id = 1;
         $clientes = Client::findOrFail($id);
-        // dd($clientes);
-        $assessments = Assessment::all();
-        return view('site.clients.show', compact('clientes', 'assessments'));
+        return view('site.clients.show', compact('clientes'));
     }
 
     /**

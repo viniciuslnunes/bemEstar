@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Site;
 
 use App\Assessment;
 use App\Client;
+use App\Form;
+use App\QuestForm;
+use App\QuestsAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -28,8 +31,18 @@ class AssessmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view("site.assessments.create");
+    {   
+        $id = 1;
+        $clientes = Client::get();     
+        $forms = Form::get();
+        $quests = QuestForm::get();
+        
+
+
+
+             
+        // dd($quests);
+        return view("site.assessments.create", compact('clientes', 'forms', 'quests'));
 
     }
 
