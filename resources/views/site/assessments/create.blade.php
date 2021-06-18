@@ -25,15 +25,15 @@
                     <label for="cliente_id">Cliente:</label>
                     <select class="custom-select" name="cliente_id">
                         @foreach($clientes as $cliente)
-                        <option value="{{$cliente->id}}">{{$cliente->nome_empresa}}</option>
+                            <option value="{{ $cliente }}">{{$cliente->nome_empresa}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col">
                     <label for="form_id">Formulário:</label>
-                    <select class="custom-select" name="form_id">
+                    <select id="forms" class="custom-select" name="form_id" id="forms">
                         @foreach($forms as $form)
-                        <option value="{{$form->id}}">{{$form->nome_formulario}}</option>
+                            <option value="{{ $form }}">{{$form->nome_formulario}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -48,11 +48,8 @@
             </div>
             <div class="row mt-4 d-flex justify-content-center">
                 <div class="col" style="display: flex; justify-content: center;">
-                    <ol style="padding: 0;">
-                        @foreach($quests as $quest)
-                        <li value="{{$quest->id}}">{{$quest->quest}}</li>
-                        @endforeach
-                        <ol>
+                    <ol id="questions" style="padding: 0;">
+                    <ol>
                 </div>
             </div>
 
@@ -70,5 +67,35 @@
         var fileName = $(this).val();
         $(this).next('.form-control-file').html(fileName);
     })
+
+    let iteration = 0;
+    let appendedQuestions = [];
+
+    const forms = document.getElementById('forms');
+    const questions = document.getElementById('questions');
+
+    forms.addEventListener('click', event => showFormQuestions(event), false);
+
+    function showFormQuestions (event) {
+        let selectedForm = JSON.parse(event.target.value);
+
+        if (iteration > 0) {
+            appendedQuestions.forEach(question => {
+                question.remove();
+            });
+        }
+
+        selectedForm.quest_form.forEach(question => {
+            let option = document.createElement('option');
+            option.text = question.quest;
+            option.value = question.id;
+
+            questions.appendChild(option);
+
+            appendedQuestions.push(option);
+        });
+        
+        iteration++;
+    }
 </script>
 @endsection

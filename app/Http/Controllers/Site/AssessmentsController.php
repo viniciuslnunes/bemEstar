@@ -38,14 +38,8 @@ class AssessmentsController extends Controller
         $id = 1;
         $clientes = Client::get();     
         $forms = Form::get();
-        $quests = QuestForm::get();
-        
-
-
-
-             
-        // dd($quests);
-        return view("site.assessments.create", compact('clientes', 'forms', 'quests'));
+        $forms->load('questForm');             
+        return view("site.assessments.create", compact('clientes', 'forms'));
 
     }
 

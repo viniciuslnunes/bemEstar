@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-dark text-white shadow-sm">
         <li class="navbar navbar-expand-md navbar-light bg-dark text-white shadow-sm nav-item dropdown">
                                 <a id="navbarDropdown" style="color:white"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  Bem vindo(a), Vinícius  
+                                  Bem vindo(a), {{ auth()->user()->name ?? 'Convidado' }}
                                 
                                 </a>
 
