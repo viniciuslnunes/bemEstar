@@ -15,20 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Site')->group(function () {
 Route::get('/', 'ClientsController@index')->name('site.clientes');
-Route::get('/clientes/create', 'ClientsController@create')->name('site.clientes.criar');
-Route::get('/clientes/show', 'ClientsController@show')->name('site.clientes.show');
-Route::post('/clientes/store', 'ClientsController@store')->name('site.clientes.store');
-Route::get('/clientes/update', 'ClientsController@update')->name('site.clientes.edit');
-Route::post('/clientes/{id}, ClientsController@destroy')->name('site.clientes.destroy');;
 
-Route::get('/formularios', 'FormsController@index')->name('site.formularios');
-Route::get('/formularios/criar', 'FormsController@create')->name('site.formularios.criar');
-Route::post('/formularios/store', 'FormsController@store')->name('site.formularios.store');
+Route::resource('clientes', 'ClientsController');
 
-Route::get('/avaliacoes', 'AssessmentsController@index')->name('site.avaliacoes');
-Route::get('/avaliacoes/criar', 'AssessmentsController@create')->name('site.avaliacoes.criar');
-Route::post('/avaliacoes/store', 'AssessmentsController@store')->name('site.avaliacoes.store');
+Route::resource('formularios', 'FormsController');
 
+Route::resource('avaliacoes', 'AssessmentsController');
 });
 
 Auth::routes();

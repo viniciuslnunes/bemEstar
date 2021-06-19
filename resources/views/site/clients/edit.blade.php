@@ -4,7 +4,7 @@
 @section('content')
 <div class="card">
     <div class="card-header bg-dark">
-        Update Shows
+        Editar Cliente
     </div>
     <div class="card-body">
 
@@ -18,7 +18,7 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('site.clientes.update', $clientes->id) }}">
+        <form method="post" action="{{ route('clientes.update', $clientes->id) }}">
             <div class="row">
                 <div class="col">
                     @csrf
@@ -37,11 +37,11 @@
                 <div class="col">
                     <label for="nome_responsavel">Responsável:</label>
                     <input type="text" class="form-control" name="nome_responsavel"
-                        value="{{ $cliente->nome_responsavel }}" />
+                        value="{{ $clientes->nome_responsavel }}" />
                 </div>
                 <div class="col">
                     <label for="email">Email:</label>
-                    <input type="text" class="form-control" name="email" value="{{ $cliente->email }}" />
+                    <input type="text" class="form-control" name="email" value="{{ $clientes->email }}" />
                 </div>
             </div>
             <div class="form-group">

@@ -57,7 +57,7 @@ class ClientsController extends Controller
 
         $clientes = $request->all();
         Client::create($clientes);
-        return redirect()->route('site.clientes')->with('success', 'Cliente cadastrado com sucesso');
+        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
 
@@ -83,7 +83,7 @@ class ClientsController extends Controller
      */
     public function edit($id)
     {
-        $clientes = Client::findOfFail($id);
+        $clientes = Client::find($id);
         return view('site.clients.edit', compact('clientes'));
     }
 
@@ -96,7 +96,7 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $clientes = Client::findOfFail($id);
+        $clientes = Client::find($id);
         request()->validate([
             'nome_empresa'      => ['required',  'max:100'],
             'cnpj'              => ['required', 'unique:clientes', 'max:14'],
@@ -118,6 +118,6 @@ class ClientsController extends Controller
     public function destroy(Request $request, Client $cliente)
     {
         $cliente->delete();
-        return redirect()->route('clients.index')->with('success', 'Cliente deletado com sucesso');    
+        return redirect()->route('clientes.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }

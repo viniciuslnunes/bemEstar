@@ -25,22 +25,6 @@
                     <td>Celular:</td>
                     <td>{{$clientes->celular}}</td>
                 </tr>
-                
-                <tr>
-                    <td colspan="4" style="text-align: center;">Avaliações</td>
-                </tr>
-                <tr>
-                    <td>ID</td>
-                    <td>Avaliação feita em</td>
-                    <td>Status</td>
-                </tr>
-              
-                <tr>
-                    <td><a href="#">1</a></td>
-                    <td>26/05/2020</td>
-                    <td>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>

@@ -24,9 +24,9 @@
             <td>{{$cliente->email}}</td>
             <td id="celular">{{$cliente->celular}}</td>
             <td>
-            <form action="{{ route('site.clientes.destroy', $cliente->id)}}" method="post">
-                    <a href="{{ route('site.clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
-                    <a href="{{ route('site.clientes.edit', $cliente->id)}}" class="btn btn-primary btn-sm">Editar</a>
+            <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
+                    <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
+                    <a href="{{ route('clientes.edit', $cliente->id)}}" class="btn btn-primary btn-sm">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm" type="submit">Deletar</button>

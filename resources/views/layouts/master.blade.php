@@ -50,24 +50,24 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.clientes') }}">Clientes</a>
+                    <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.clientes.criar') }}">Cadastrar Cliente</a>
+                    <a class="nav-link" href="{{ route('clientes.create') }}">Cadastrar Cliente</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.formularios') }}">Formulários</a>
+                    <a class="nav-link" href="{{ route('formularios.index') }}">Formulários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.formularios.criar') }}">Novo Formulário</a>
+                    <a class="nav-link" href="{{ route('formularios.create') }}">Novo Formulário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.avaliacoes') }}">Avaliações</a>
+                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Avaliações</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.avaliacoes.criar') }}">Nova Avaliação</a>
+                    <a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Avaliação</a>
                 </li>
-                <form id="logout-form" action="{{ route('site.clientes') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('clientes.index') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             </ul>

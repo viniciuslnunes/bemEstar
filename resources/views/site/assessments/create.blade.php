@@ -18,7 +18,7 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('site.formularios.store') }}">
+        <form method="post" action="{{ route('formularios.store') }}">
             <div class="row">
                 <div class="col">
                     @csrf
