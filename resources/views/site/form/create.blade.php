@@ -30,12 +30,6 @@
 
                 </div>
 
-                <!-- ADICIONAR USER COMO CRIADOR DO FORM -->
-
-                <!-- <div class="col">
-                    <label for="cpf">CNPJ:</label>
-                    <input type="text" class="form-control" name="cnpj" />
-                </div> -->
             </div>
             <div class="inputs mb-4">
                 <label for="">questões</label>

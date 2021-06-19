@@ -23,9 +23,9 @@ class AssessmentsController extends Controller
     public function index()
     {
         $assessments = Assessment::all();
-        // $clientes = Client::all();
+        $clientes = Client::all();
 
-        return view("site.assessments.index" , compact("assessments"));
+        return view("site.assessments.index" , compact("assessments", "clientes"));
     }
 
     /**

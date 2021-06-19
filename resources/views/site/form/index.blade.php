@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
 <table class="table table-striped table-bordered">
-
-<!-- LISTA DE ATENDIMENTOS -->
-
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID.</th>
@@ -19,7 +17,7 @@
             <td>{{$form->nome_formulario}}</td>
             <td>
                 <form action="{{ route('site.clientes')}}" method="post">
-                    <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Detalhes</a>
+                    <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Ver questões</a>
                     <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Editar</a>
                     @csrf
                     @method('DELETE')

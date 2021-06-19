@@ -14,6 +14,8 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
     <title>@yield('title')</title>
     @yield('script_head')
@@ -48,7 +50,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('site.clientes') }}">Lista de atendimentos</a>
+                    <a class="nav-link" href="{{ route('site.clientes') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('site.clientes.criar') }}">Cadastrar Cliente</a>

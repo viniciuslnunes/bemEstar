@@ -69,9 +69,8 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $id = 1;
         $clientes = Client::findOrFail($id);
         return view('site.clients.show', compact('clientes'));
     }
@@ -116,9 +115,8 @@ class ClientsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, Client $cliente)
     {
-        $cliente = Client::findOrFail($id);
         $cliente->delete();
         return redirect()->route('clients.index')->with('success', 'Cliente deletado com sucesso');    
     }

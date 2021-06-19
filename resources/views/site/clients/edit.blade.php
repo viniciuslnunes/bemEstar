@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="celular">Celular:</label>
-                <input type="text" class="form-control" name="celular" value="{{ $clientes->celular }}" />
+                <input type="text" class="form-control" id ="celular" name="celular" value="{{ $clientes->celular }}" />
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
