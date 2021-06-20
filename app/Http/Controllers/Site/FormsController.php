@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Form;
 use App\Http\Controllers\Controller;
+use App\QuestForm;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -66,7 +67,7 @@ class FormsController extends Controller
             ]);
         }
 
-        return redirect()->route('site.clientes')->with('success', 'Formulário cadastrado com sucesso');
+        return redirect()->route('formularios.index')->with('success', 'Formulário cadastrado com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
     }
@@ -77,9 +78,17 @@ class FormsController extends Controller
      * @param  $categry
      * @return \Illuminate\Http\Response
      */
-    public function show(Form $form)
+    public function show($id)
     {
-        return view('site.form.show', ['forms' => $form->load(['assessments', 'client'])]);
+        $forms = Form::find($id);
+        $forms->load('questForm');   
+        
+        // dd($forms);
+
+       
+
+     
+        return view('site.form.show', compact('forms'));
     }
 
     /**
@@ -118,8 +127,9 @@ class FormsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Form $form)
+    public function destroy($id)
     {
+        $form = Form::find($id);
         $form->delete();
         return redirect()->route('formularios.index')->with('success', 'Cliente deletado com sucesso');    
     }

@@ -17,6 +17,7 @@
             <td>{{$form->nome_formulario}}</td>
             <td>
                 <form action="{{ route('formularios.destroy', $form->id)}}" method="post">
+                <!-- Adicionar view de quests -->
                     <a href="{{ route('formularios.show', $form->id)}}" class="btn btn-primary btn-sm">Ver questões</a>
                     <a href="{{ route('formularios.edit', $form->id)}}" class="btn btn-primary btn-sm">Editar</a>
                     @csrf

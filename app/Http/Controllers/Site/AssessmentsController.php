@@ -34,13 +34,11 @@ class AssessmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $id = 1;
+    {
         $clientes = Client::get();     
         $forms = Form::get();
         $forms->load('questForm');             
         return view("site.assessments.create", compact('clientes', 'forms'));
-
     }
 
     /**

@@ -28,7 +28,7 @@
                 </div>
                 <div class="col">
                     <label for="cpf">CNPJ:</label>
-                    <input type="text" class="form-control" name="cnpj" />
+                    <input type="text" id="cnpj" class="form-control" name="cnpj" />
                 </div>
             </div>
             <div class="row">
@@ -43,10 +43,15 @@
             </div>
             <div class="form-group">
                 <label for="celular">Celular:</label>
-                <input type="text" class="form-control" name="celular" />
+                <input type="text" id="celular" class="form-control" name="celular" />
             </div>
             <button type="submit" class="btn btn-primary">Adicionar cliente</button>
         </form>
     </div>
 </div>
+<script type="text/javascript">
+$("#celular").mask("(00) 90000-0000");
+$("#cnpj").mask("000.000.000-00");
+</script>
+
 @endsection

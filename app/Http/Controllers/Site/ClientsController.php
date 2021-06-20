@@ -52,7 +52,7 @@ class ClientsController extends Controller
             'cnpj' => ['required', 'unique:clients', 'max:14'],
             'nome_responsavel' => ['required', 'max:100'],
             'email' => ['required',  'max:100'],
-            'celular' => ['required', 'max:11'],
+            'celular' => ['required', 'max:15'],
         ]);
 
         $clientes = $request->all();
@@ -102,7 +102,7 @@ class ClientsController extends Controller
             'cnpj'              => ['required', 'max:14'],
             'nome_responsavel'  => ['required', 'max:100'],
             'email'             => ['required', 'max:100'],
-            'celular'           => ['required', 'max:11'],
+            'celular'           => ['required', 'max:15'],
         ]);
         $clientes->update($request->all());
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso');
