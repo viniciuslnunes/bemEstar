@@ -90,7 +90,9 @@ class FormsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $forms = Form::find($id);   
+        return view('site.form.edit', compact('forms'));
+
     }
 
     /**
@@ -102,7 +104,12 @@ class FormsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $forms = Form::find($id);
+        request()->validate([
+            'nome_formulario' => ['required',  'max:100'],
+        ]);
+        $forms->update($request->all());
+        return redirect()->route('formularios.index')->with('success', 'Cliente atualizado com sucesso');
     }
 
     /**
@@ -111,8 +118,9 @@ class FormsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Form $form)
     {
-        //
+        $form->delete();
+        return redirect()->route('formularios.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }

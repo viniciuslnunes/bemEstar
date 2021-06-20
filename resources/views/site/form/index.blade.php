@@ -16,9 +16,9 @@
             <td>{{$form->id}}</td>
             <td>{{$form->nome_formulario}}</td>
             <td>
-                <form action="{{ route('site.clientes')}}" method="post">
-                    <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Ver questões</a>
-                    <a href="{{ route('site.clientes')}}" class="btn btn-primary btn-sm">Editar</a>
+                <form action="{{ route('formularios.destroy', $form->id)}}" method="post">
+                    <a href="{{ route('formularios.show', $form->id)}}" class="btn btn-primary btn-sm">Ver questões</a>
+                    <a href="{{ route('formularios.edit', $form->id)}}" class="btn btn-primary btn-sm">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
