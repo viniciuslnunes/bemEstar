@@ -23,10 +23,18 @@
                 <div class="col">
                     @csrf
                     @method('PATCH')
-                <label for="cnpj">Nome do formulário:</label>
+                    <label for="cnpj">Nome do formulário:</label>
                     <input type="text" class="form-control" name="nome_formulario" value="{{ $forms->nome_formulario }}" />
-             
-                    
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    @foreach($forms->questForm as $quest)
+                    <div class="form-group">
+                        <label for="{{$quest->id}}">Questão {{$loop->index+1}}:</label>
+                        <input type="text" class="form-control" name="quest-{{$quest->id}}" id="{{$quest->id}}" value="{{$quest->quest}}">
+                    </div>
+                    @endforeach
                 </div>
             </div>
             <button type="submit" class="btn btn-primary mt-3">Salvar</button>

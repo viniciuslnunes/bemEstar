@@ -17,7 +17,7 @@ class CreateClientsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('nome_empresa', 100);
-            $table->string('cnpj', 14);
+            $table->string('cnpj', 18);
             $table->string('nome_responsavel', 100);
             $table->string('email', 100);
             $table->string('celular', 15);

@@ -81,13 +81,8 @@ class FormsController extends Controller
     public function show($id)
     {
         $forms = Form::find($id);
-        $forms->load('questForm');   
+        $forms->load('questForm');      
         
-        // dd($forms);
-
-       
-
-     
         return view('site.form.show', compact('forms'));
     }
 
@@ -100,6 +95,8 @@ class FormsController extends Controller
     public function edit($id)
     {
         $forms = Form::find($id);   
+        $forms->load('questForm');      
+
         return view('site.form.edit', compact('forms'));
 
     }

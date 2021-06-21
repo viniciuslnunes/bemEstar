@@ -49,7 +49,7 @@ class ClientsController extends Controller
     {
         request()->validate([
             'nome_empresa' => ['required', 'unique:clients', 'max:100'],
-            'cnpj' => ['required', 'unique:clients', 'max:14'],
+            'cnpj' => ['required', 'unique:clients', 'max:18'],
             'nome_responsavel' => ['required', 'max:100'],
             'email' => ['required',  'max:100'],
             'celular' => ['required', 'max:15'],

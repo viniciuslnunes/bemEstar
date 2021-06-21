@@ -28,9 +28,7 @@
                         value="{{ $clientes->nome_empresa }}" />   </div>
                 <div class="col">
                 <label for="cnpj">CNPJ:</label>
-                    <input type="text" class="form-control" name="cnpj" value="{{ $clientes->cnpj }}" />
-             
-                    
+                    <input type="text" class="form-control" name="cnpj" value="{{ $clientes->cnpj }}" /> 
                 </div>
             </div>
             <div class="row">

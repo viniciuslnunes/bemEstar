@@ -51,7 +51,7 @@
 </div>
 <script type="text/javascript">
 $("#celular").mask("(00) 90000-0000");
-$("#cnpj").mask("000.000.000-00");
+$("#cnpj").mask("00.000.000/0000-00");
 </script>
 
 @endsection
