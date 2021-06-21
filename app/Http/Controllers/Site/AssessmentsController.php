@@ -56,8 +56,10 @@ class AssessmentsController extends Controller
         ]);
 
         $avaliacoes = $request->all();
-        Assessment::create($avaliacoes);
-        return redirect()->route('atendimento.create')->with('success', 'Avaliação cadastrada com sucesso');
+        
+        $assessment = Assessment::create($avaliacoes);
+
+        return redirect()->route('atendimento.create', array($assessment->id))->with('success', 'Avaliação cadastrada com sucesso');
 
         // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
     }

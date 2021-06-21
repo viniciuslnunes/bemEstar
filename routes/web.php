@@ -20,7 +20,15 @@ Route::resource('clientes', 'ClientsController');
 
 Route::resource('formularios', 'FormsController');
 
-Route::resource('atendimento', 'AssessmentsCreateController');
+// Route::resource('atendimento', 'AssessmentsCreateController');
+
+Route::get('atendimento/index', 'AssessmentsCreateController@index')->name('atendimento.index');
+Route::get('atendimento/create/{id}', 'AssessmentsCreateController@create')->where('id', '[0-9]+')->name('atendimento.create');
+Route::post("atendimento/store", "AssessmentsCreateController@store")->name("atendimento.store");
+Route::get("/atendimento/show/{id}", "AssessmentsCreateController@show")->where('id', '[0-9]+');
+Route::get("/atendimento/edit/{id}", "AssessmentsCreateController@edit")->where('id', '[0-9]+')->name("atendimento.edit");
+Route::post("/atendimento/update/{id}", "AssessmentsCreateController@update")->name("atendimento.update");
+Route::get("/atendimento/destroy/{id}", "AssessmentsCreateController@destroy")->where('id', '[0-9]+')->name("atendimento.destroy");
 
 Route::resource('avaliacoes', 'AssessmentsController');
 Route::get('avaliacoes/criar-avaliacao/{id}', 'AssessmentsController@question')->name('avaliacoes.criar-avaliacao');
