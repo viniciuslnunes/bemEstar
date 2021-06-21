@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Assessment;
+use App\Client;
+use App\QuestForm;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -27,9 +30,19 @@ class AssessmentsCreateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('site.atendimento.create');
+        $assessment = Assessment::where("id", $id)->first();
+        $form = QuestForm::where("id", $assessment->form_id)->first();
+        $client = Client::where("id", $assessment->client_id)->first();
+        $questions = QuestForm::where("form_id", $assessment->form_id)->get();
+
+        $data = [
+            "questions" => $questions, 
+            "client" => $client
+        ];
+
+        return view('site.atendimento.create', $data);
     }
 
     /**

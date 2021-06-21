@@ -18,12 +18,13 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('avaliacoes.store') }}">
-            <div class="row">
+        <form method="post" action="{{ route('avaliacoes.store') }}" id="formAssessments">
+            <div class="row"> 
                 <div class="col">
                     @csrf
                     <label for="client_id">Cliente:</label>
                     <select class="custom-select" name="client_id">
+                        <option value="">Cliente</option>
                         @foreach($clientes as $cliente)
                             <option value="{{ $cliente->id }}">{{$cliente->nome_empresa}}</option>
                         @endforeach
@@ -32,6 +33,7 @@
                 <div class="col">
                     <label for="form_id">Formulário:</label>
                     <select id="forms" class="custom-select" name="form_id" id="forms">
+                        <option value="">Formulário</option>
                         @foreach($forms as $form)
                             <option value="{{ $form->id }}">{{$form->nome_formulario}}</option>
                         @endforeach
@@ -55,7 +57,7 @@
 
             <br>
             <div class="row d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary mr-4">Salvar e sair </button>
+            <button onclick="event.preventDefault(); alert('aqui'); $('#formAssessments').attr('action', '{{ route('atendimento.index') }}'); $('#formAssessments').submit();" class="btn btn-primary mr-4">Salvar e sair </button>
             <button type="submit" class="btn btn-primary">Salvar e continuar</button>
             </div>
         </form>
