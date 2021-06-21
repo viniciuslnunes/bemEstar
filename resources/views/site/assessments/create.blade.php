@@ -18,14 +18,14 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('formularios.store') }}">
+        <form method="post" action="{{ route('avaliacoes.store') }}">
             <div class="row">
                 <div class="col">
                     @csrf
-                    <label for="cliente_id">Cliente:</label>
-                    <select class="custom-select" name="cliente_id">
+                    <label for="client_id">Cliente:</label>
+                    <select class="custom-select" name="client_id">
                         @foreach($clientes as $cliente)
-                            <option value="{{ $cliente }}">{{$cliente->nome_empresa}}</option>
+                            <option value="{{ $cliente->id }}">{{$cliente->nome_empresa}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -33,7 +33,7 @@
                     <label for="form_id">Formulário:</label>
                     <select id="forms" class="custom-select" name="form_id" id="forms">
                         @foreach($forms as $form)
-                            <option value="{{ $form }}">{{$form->nome_formulario}}</option>
+                            <option value="{{ $form->id }}">{{$form->nome_formulario}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -63,10 +63,6 @@
 </div>
 
 <script>
-    $('.custom-file-input').on('change', function() {
-        var fileName = $(this).val();
-        $(this).next('.form-control-file').html(fileName);
-    })
 
     let iteration = 0;
     let appendedQuestions = [];

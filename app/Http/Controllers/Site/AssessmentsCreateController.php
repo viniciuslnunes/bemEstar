@@ -2,30 +2,24 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Assessment;
-use App\Client;
-use App\Form;
-use App\QuestForm;
-use App\QuestsAssessment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class AssessmentsController extends Controller
+class AssessmentsCreateController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $assessments = Assessment::all();
-        $clientes = Client::all();
-
-        return view("site.assessments.index" , compact("assessments", "clientes"));
+        return view('site.atendimento.index');
     }
 
     /**
@@ -35,10 +29,7 @@ class AssessmentsController extends Controller
      */
     public function create()
     {
-        $clientes = Client::get();     
-        $forms = Form::get();
-        $forms->load('questForm');             
-        return view("site.assessments.create", compact('clientes', 'forms'));
+        return view('site.atendimento.create');
     }
 
     /**
@@ -48,18 +39,8 @@ class AssessmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        // dd($request);
-        request()->validate([
-            'client_id' => ['required', 'integer'],
-            'form_id' => ['required', 'integer'],
-        ]);
-
-        $avaliacoes = $request->all();
-        Assessment::create($avaliacoes);
-        return redirect()->route('atendimento.create')->with('success', 'Avaliação cadastrada com sucesso');
-
-        // $request->session()->flash('mensagem', "Cliente {$clientes->id} criado com sucesso {$clientes->nome}");
+    {
+        //
     }
 
     /**
@@ -105,9 +86,5 @@ class AssessmentsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function question($id){
-        return view('site.assessments.createassessment');
     }
 }

@@ -12,9 +12,8 @@ class Assessment extends Model
 
 
     protected $fillable = [
-        
-        'form_id',
         'client_id',
+        'form_id',
         'question',
         'answer', 
         'description',
