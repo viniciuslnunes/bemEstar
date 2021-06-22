@@ -10,6 +10,7 @@ class AssessmentCreate extends Model
     protected $table = "assessments_create";
 
     protected $fillable = [
+        'quest_id',
         'nota',
         'answer',
         'image',

@@ -20,9 +20,9 @@ class CreateAssessmentsCreateTable extends Migration
             $table->unsignedBigInteger('quest_id');
             $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
 
-            $table->integer('nota', 10);
-            $table->string('answer', 250);
-            $table->string('image', 150);
+            $table->integer('nota');
+            $table->longText('answer', 250);
+            $table->string('image', 150)->nullable();
             $table->timestamps();
         });
     }

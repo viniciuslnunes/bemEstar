@@ -30,15 +30,16 @@
             <div class="row">
             	<div class="col-lg-12">
                     <label for="nota">Nota</label>
-                    <input type="text" class="form-control" name="nota" />
+                    <input type="text" class="form-control" name="assessments_create[{{ $loop->iteration }}][nota]" />
                 </div>
+                    <input type="hidden" class="form-control" name="assessments_create[{{$loop->iteration}}][quest_id]" value="{{$question->id}}"/>
                 <div class="col-lg-12">
                     <label for="answer">Observações</label>
-                    <input type="text" class="form-control" name="answer" />
+                    <input type="text" class="form-control" name="assessments_create[{{$loop->iteration}}][answer]" />
                 </div>
                 <div class="col-lg-12">
                     <label for="image">Imagem</label>
-                    <input type="file" id="image" class="form-control" name="image" />
+                    <input type="file" id="image" class="form-control" name="assessments_create[{{$loop->iteration}}][image]" />
                 </div>
             </div>
             @endforeach

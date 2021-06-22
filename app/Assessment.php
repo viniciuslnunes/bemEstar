@@ -14,10 +14,7 @@ class Assessment extends Model
     protected $fillable = [
         'client_id',
         'form_id',
-        'question',
-        'answer', 
-        'description',
-        'status',
+        'data_inicio',
     ];
 
     protected $dates = [

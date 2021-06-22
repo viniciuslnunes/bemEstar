@@ -54,13 +54,16 @@ class AssessmentsCreateController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'nota' => ['required',  'max:10'],
-            'answer' => ['required', 'max:250'],
-            'image' => ['max:150'],
-        ]);
+        // request()->validate([
+        //     'nota' => ['required',  'max:10'],
+        //     'answer' => ['required', 'max:250'],
+        //     'image' => ['max:150'],
+        // ]);
+
         $createassessment = $request->all();
-        AssessmentCreate::create($createassessment);
+        // dd($createassessment);
+        AssessmentCreate::create($request->get("assessments_create"));
+
         return redirect()->route('avaliacoes.index')->with('success', 'Cliente cadastrado com sucesso');
     }
 
