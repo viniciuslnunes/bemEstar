@@ -18,7 +18,7 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('clientes.store') }}">
+        <form method="POST" action="{{ route('atendimento.store') }}">
         @csrf
         	@foreach($questions as $question)
         	<div class="row">

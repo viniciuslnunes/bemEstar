@@ -28,7 +28,7 @@
                         value="{{ $clientes->nome_empresa }}" />   </div>
                 <div class="col">
                 <label for="cnpj">CNPJ:</label>
-                    <input type="text" class="form-control" name="cnpj" value="{{ $clientes->cnpj }}" /> 
+                    <input type="text" class="form-control" id= "cnpj" name="cnpj" value="{{ $clientes->cnpj }}" /> 
                 </div>
             </div>
             <div class="row">
@@ -50,4 +50,8 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+$("#celular").mask("(00) 90000-0000");
+$("#cnpj").mask("00.000.000/0000-00");
+</script>
 @endsection

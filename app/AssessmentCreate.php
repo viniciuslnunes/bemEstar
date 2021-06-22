@@ -6,7 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssessmentCreate extends Model
 {
-    protected $fillable = [
 
+    protected $table = "assessments_create";
+
+    protected $fillable = [
+        'nota',
+        'answer',
+        'image',
     ];
+
+    protected $dates = [
+        'deleted_at'
+    ];
+
+    public function assessment(){
+        return $this->belongsTo(Assessment::class);
+    }
+
 }

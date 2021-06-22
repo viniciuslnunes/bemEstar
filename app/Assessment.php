@@ -37,4 +37,8 @@ class Assessment extends Model
         return $this->HasMany(QuestsAssessment::class);
     }
 
+    public function assessmentsCreate(){
+        return $this->HasMany(assessmentsCreate::class);
+    }
+
 }

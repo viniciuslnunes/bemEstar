@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Assessment;
+use App\AssessmentCreate;
 use App\Client;
 use App\QuestForm;
 use Illuminate\Http\Request;
@@ -53,7 +54,14 @@ class AssessmentsCreateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'nota' => ['required',  'max:10'],
+            'answer' => ['required', 'max:250'],
+            'image' => ['max:150'],
+        ]);
+        $createassessment = $request->all();
+        AssessmentCreate::create($createassessment);
+        return redirect()->route('avaliacoes.index')->with('success', 'Cliente cadastrado com sucesso');
     }
 
     /**
@@ -64,7 +72,8 @@ class AssessmentsCreateController extends Controller
      */
     public function show($id)
     {
-        //
+        $createassessment = AssessmentCreate::find($id);
+        return view('site.atendimento.show');
     }
 
     /**
@@ -75,7 +84,8 @@ class AssessmentsCreateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $createassessment = AssessmentCreate::find($id);
+        return view('site.atendimento.edit', compact('createassessment'));
     }
 
     /**
@@ -87,7 +97,14 @@ class AssessmentsCreateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $createassessment = AssessmentCreate::find($id);
+        request()->validate([
+            'nota' => ['required',  'max:10'],
+            'answer' => ['required', 'max:250'],
+            'image' => ['max:150'],
+        ]);
+        $createassessment->update($request->all());
+        return redirect()->route('avaliacoes.index')->with('success', 'Cliente atualizado com sucesso');
     }
 
     /**
@@ -96,8 +113,9 @@ class AssessmentsCreateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, AssessmentCreate $assessmentCreate)
     {
-        //
+        $assessmentCreate->delete();
+        return redirect()->route('avaliacoes.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }

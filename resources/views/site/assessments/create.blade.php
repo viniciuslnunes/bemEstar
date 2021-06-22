@@ -40,8 +40,8 @@
                     </select>
                 </div>
                 <div class="col">
-                    <label for="data_parcelas">Data:</label>
-                    <input type="date" class="form-control" name="data_parcelas" />
+                    <label for="created_at">Data:</label>
+                    <input type="date" class="form-control" name="created_at" />
                 </div>
             </div>
             <div class="row mt-4 d-flex justify-content-center">
