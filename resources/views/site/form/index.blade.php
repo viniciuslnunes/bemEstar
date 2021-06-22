@@ -2,6 +2,11 @@
 @section('content')
 
 <table class="table table-striped table-bordered">
+    @if (Session::has('success'))
+        <div class="contact-form-success alert alert-success mt-4">
+            {{ Session::get('success') }}
+        </div>
+    @endif
     <thead class="thead-dark">
         <tr>
             <th scope="col">ID.</th>

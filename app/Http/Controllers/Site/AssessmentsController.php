@@ -53,6 +53,7 @@ class AssessmentsController extends Controller
         request()->validate([
             'client_id' => ['required', 'integer'],
             'form_id' => ['required', 'integer'],
+            'data_inicio'  => ['required'],
         ]);
 
         $avaliacoes = $request->all();

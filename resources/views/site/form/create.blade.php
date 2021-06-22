@@ -26,7 +26,7 @@
                 <div class="col">
 
                     <label for="nome_formulario">Nome do formulário</label>
-                    <input type="text" class="form-control" name="nome_formulario">
+                    <input type="text" class="form-control" name="nome_formulario" value="{{ old('nome_formulario') }}">
 
                 </div>
 

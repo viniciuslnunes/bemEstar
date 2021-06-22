@@ -2,6 +2,12 @@
 @section('title', 'Bem estar - Lista de atendimento')
 @section('content')
 <table class="table table-striped table-bordered">
+@if (Session::has('success'))
+        <div class="contact-form-success alert alert-success mt-4">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+    <!-- <img src="{{asset('storage/img-avaliacoes/daniel.PNG')}}" alt=""> -->
 
     <thead class="thead-dark">
         <tr>

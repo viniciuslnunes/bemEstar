@@ -60,11 +60,13 @@ class FormsController extends Controller
         // foreach ($request->get('quest') as $quest) {
         //     array_push($array_quest, $quest);
         // }
-        
-        foreach ($request->get('quest') as $quest) {
-            $form->questForm()->create([
-                'quest' => $quest
-            ]);
+
+        if ($request->has('quest')) {
+            foreach ($request->get('quest') as $quest) {
+                $form->questForm()->create([
+                    'quest' => $quest
+                ]);
+            }
         }
 
         return redirect()->route('formularios.index')->with('success', 'Formulário cadastrado com sucesso');

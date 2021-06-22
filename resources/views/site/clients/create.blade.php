@@ -24,26 +24,26 @@
                 <div class="col">
                 
                     <label for="nome_fantasia">Nome da empresa:</label>
-                    <input type="text" class="form-control" name="nome_empresa" />
+                    <input type="text" class="form-control" name="nome_empresa" value="{{ old('nome_empresa') }}" />
                 </div>
                 <div class="col">
                     <label for="cpf">CNPJ:</label>
-                    <input type="text" id="cnpj" class="form-control" name="cnpj" />
+                    <input type="text" id="cnpj" class="form-control" name="cnpj" value="{{ old('cnpj') }}" />
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label for="user">Nome do responsável:</label>
-                    <input type="text" class="form-control" name="nome_responsavel" />
+                    <input type="text" class="form-control" name="nome_responsavel" value="{{ old('nome_responsavel') }}" />
                 </div>
                 <div class="col">
                     <label for="email">E-mail</label>
-                    <input type="text" class="form-control" name="email" />
+                    <input type="text" class="form-control" name="email" value="{{ old('email') }}" />
                 </div>
             </div>
             <div class="form-group">
                 <label for="celular">Celular:</label>
-                <input type="text" id="celular" class="form-control" name="celular" />
+                <input type="text" id="celular" class="form-control" name="celular" value="{{ old('celular') }}" />
             </div>
             <button type="submit" class="btn btn-primary">Adicionar cliente</button>
         </form>

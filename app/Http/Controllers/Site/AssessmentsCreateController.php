@@ -8,6 +8,7 @@ use App\Client;
 use App\QuestForm;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AssessmentsCreateController extends Controller
 {
@@ -59,12 +60,16 @@ class AssessmentsCreateController extends Controller
         //     'answer' => ['required', 'max:250'],
         //     'image' => ['max:150'],
         // ]);
-
+        
         $createassessment = $request->all();
-        // dd($createassessment);
-        AssessmentCreate::create($request->get("assessments_create"));
 
-        return redirect()->route('avaliacoes.index')->with('success', 'Cliente cadastrado com sucesso');
+        foreach($createassessment['assessments_create'] as $assessment){
+            // dd($assessment['image']->getClientOriginalName());
+            Storage::putFileAs('public/img-avaliacoes', $assessment["image"], $assessment['image']->getClientOriginalName());
+            AssessmentCreate::create($assessment);
+        }
+
+        return redirect()->route('avaliacoes.index')->with('success', 'Avaliação cadastrada com sucesso');
     }
 
     /**
