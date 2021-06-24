@@ -13,13 +13,15 @@ class CreateAssessmentsCreateTable extends Migration
      */
     public function up()
     {
+        //ATENDIMENTO
         Schema::create('assessments_create', function (Blueprint $table) {
 
             $table->id();
             
-            $table->unsignedBigInteger('quest_id');
-            $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
+            // $table->unsignedBigInteger('quest_id');
+            // $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
 
+            $table->boolean('status');
             $table->integer('nota');
             $table->longText('answer', 250);
             $table->string('image', 150)->nullable();

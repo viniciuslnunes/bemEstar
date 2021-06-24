@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// IMPLEMENTAR MIDDLEWARE DE LOG ACESSO
+
 Route::namespace('Site')->group(function () {
 Route::get('/', 'ClientsController@index')->name('site.clientes');
 
 Route::resource('clientes', 'ClientsController');
 
 Route::resource('formularios', 'FormsController');
-
-// Route::resource('atendimento', 'AssessmentsCreateController');
 
 Route::get('atendimento/index', 'AssessmentsCreateController@index')->name('atendimento.index');
 Route::get('atendimento/create/{id}', 'AssessmentsCreateController@create')->where('id', '[0-9]+')->name('atendimento.create');

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Site;
 
 use App\Assessment;
+use App\AssessmentCreate;
+use App\Avaliacoes;
 use App\Client;
 use App\Form;
 use App\QuestForm;
 use App\QuestsAssessment;
+use CreateAssessmentsTable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -21,11 +24,9 @@ class AssessmentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $assessments = Assessment::all();
-        $clientes = Client::all();
-
-        return view("site.assessments.index" , compact("assessments", "clientes"));
+    {   
+        $avaliacoes = Avaliacoes::all();
+        return view("site.assessments.index" , compact("avaliacoes"));
     }
 
     /**
@@ -73,7 +74,7 @@ class AssessmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

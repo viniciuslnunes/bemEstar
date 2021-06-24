@@ -11,6 +11,7 @@ class AssessmentCreate extends Model
 
     protected $fillable = [
         'quest_id',
+        'status',
         'nota',
         'answer',
         'image',

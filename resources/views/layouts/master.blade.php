@@ -62,7 +62,7 @@
                     <a class="nav-link" href="{{ route('formularios.create') }}">Novo Formulário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Avaliações</a>
+                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Avaliações</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Avaliação</a>

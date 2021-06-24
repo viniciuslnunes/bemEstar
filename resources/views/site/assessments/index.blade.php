@@ -21,13 +21,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($clientes as $cliente)
+        @foreach($avaliacoes as $cliente)
         <tr>
             <td>{{$cliente->nome_empresa}}</td>
             <td>{{$cliente->nome_responsavel}}</td>
-            <td>#</td>
-            <td>#</td>
-            <td>#</td>
+            <td>{{$cliente->nome_formulario}}</td>
+            <td>{{date('d/m/Y', strtotime($cliente->data_inicio))}}</td>
+            <td>{{$cliente->status}}</td>
             <td>
             <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
                     <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>

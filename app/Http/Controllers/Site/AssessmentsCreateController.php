@@ -36,12 +36,15 @@ class AssessmentsCreateController extends Controller
     {
         $assessment = Assessment::where("id", $id)->first();
         $form = QuestForm::where("id", $assessment->form_id)->first();
+        // $status = AssessmentCreate::where("status", $assessment->status);
         $client = Client::where("id", $assessment->client_id)->first();
         $questions = QuestForm::where("form_id", $assessment->form_id)->get();
 
+   
+
         $data = [
             "questions" => $questions, 
-            "client" => $client
+            "client" => $client,
         ];
 
         return view('site.atendimento.create', $data);
@@ -55,11 +58,12 @@ class AssessmentsCreateController extends Controller
      */
     public function store(Request $request)
     {
-        // request()->validate([
-        //     'nota' => ['required',  'max:10'],
-        //     'answer' => ['required', 'max:250'],
-        //     'image' => ['max:150'],
-        // ]);
+        request()->validate([
+            'status' => ['required', 'boolean'],
+            'assessments_create.*.nota' => ['required',  'max:10'],
+            'assessments_create.*.answer' => ['required', 'max:250'],
+            'image' => ['max:150'],
+        ]);
         
         $createassessment = $request->all();
 
@@ -68,7 +72,7 @@ class AssessmentsCreateController extends Controller
             Storage::putFileAs('public/img-avaliacoes', $assessment["image"], $assessment['image']->getClientOriginalName());
             AssessmentCreate::create($assessment);
         }
-
+        AssessmentCreate::create($createassessment);
         return redirect()->route('avaliacoes.index')->with('success', 'Avaliação cadastrada com sucesso');
     }
 
@@ -107,6 +111,7 @@ class AssessmentsCreateController extends Controller
     {
         $createassessment = AssessmentCreate::find($id);
         request()->validate([
+            'status' => ['required', 'boolean'],
             'nota' => ['required',  'max:10'],
             'answer' => ['required', 'max:250'],
             'image' => ['max:150'],

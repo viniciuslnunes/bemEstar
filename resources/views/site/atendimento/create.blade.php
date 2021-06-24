@@ -3,9 +3,11 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header bg-dark">
+    <div class="card-header bg-dark col">
         {{ $client->nome_empresa }}
+       
     </div>
+    
     <div class="card-body">
 
         @if ($errors->any())
@@ -20,12 +22,19 @@
 
         <form method="POST" enctype="multipart/form-data" action="{{ route('atendimento.store') }}">
         @csrf
+        <div class="col mt-4">
+                    <label for="status">Status</label>
+                    <select class="custom-select" name="status">
+                        <option value="0">Finalizado</option>
+                        <option value="1">Em andamento</option>
+                    </select>
+                </div>
         	@foreach($questions as $question)
         	<div class="row">
         		<div class="col-lg-12">
         			<legend>{{ $loop->iteration }} - {{ $question->quest }}</legend>
         		</div>
-        		
+
         	</div>
             <div class="row">
             	<div class="col-lg-12">
