@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssessmentsCreateTable extends Migration
+class CreateQuestAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,12 @@ class CreateAssessmentsCreateTable extends Migration
     public function up()
     {
         //ATENDIMENTO
-        Schema::create('assessments_create', function (Blueprint $table) {
-
+        Schema::create('quest_answers', function (Blueprint $table) {
             $table->id();
-            
-            // $table->unsignedBigInteger('quest_id');
-            // $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
-
-            $table->boolean('status');
+            $table->unsignedBigInteger('quest_id');
+            $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
             $table->integer('nota');
             $table->longText('answer', 250);
-            $table->string('image', 150)->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ class CreateAssessmentsCreateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assessments_create');
+        Schema::dropIfExists('quest_answers');
     }
 }

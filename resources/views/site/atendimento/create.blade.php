@@ -22,6 +22,7 @@
 
         <form method="POST" enctype="multipart/form-data" action="{{ route('atendimento.store') }}">
         @csrf
+        <input type="hidden" name="form_id" value="{{ $form_id }}">
         <div class="col mt-4">
                     <label for="status">Status</label>
                     <select class="custom-select" name="status">
@@ -39,16 +40,16 @@
             <div class="row">
             	<div class="col-lg-12">
                     <label for="nota">Nota</label>
-                    <input type="text" class="form-control" name="assessments_create[{{ $loop->iteration }}][nota]" />
+                    <input type="text" class="form-control" name="answers[{{ $loop->iteration }}][nota]" />
                 </div>
-                    <input type="hidden" class="form-control" name="assessments_create[{{$loop->iteration}}][quest_id]" value="{{$question->id}}"/>
+                    <input type="hidden" class="form-control" name="answers[{{$loop->iteration}}][quest_id]" value="{{$question->id}}"/>
                 <div class="col-lg-12">
                     <label for="answer">Observações</label>
-                    <input type="text" class="form-control" name="assessments_create[{{$loop->iteration}}][answer]" />
+                    <input type="text" class="form-control" name="answers[{{$loop->iteration}}][answer]" />
                 </div>
                 <div class="col-lg-12">
                     <label for="image">Imagem</label>
-                    <input type="file" id="image" class="form-control" name="assessments_create[{{$loop->iteration}}][image]" />
+                    <input type="file" id="image" class="form-control" name="answers[{{$loop->iteration}}][images][]" />
                 </div>
             </div>
             @endforeach

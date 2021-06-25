@@ -16,6 +16,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="{{ asset('js/form.js') }}" type="text/javascript"></script>
 
     <title>@yield('title')</title>
     @yield('script_head')
@@ -62,10 +63,10 @@
                     <a class="nav-link" href="{{ route('formularios.create') }}">Novo Formulário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Avaliações</a>
+                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Atendimento</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Avaliação</a>
+                    <a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Atendimento</a>
                 </li>
                 <form id="logout-form" action="{{ route('clientes.index') }}" method="POST" style="display: none;">
                     @csrf

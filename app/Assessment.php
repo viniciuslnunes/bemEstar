@@ -14,7 +14,7 @@ class Assessment extends Model
     protected $fillable = [
         'client_id',
         'form_id',
-        'assessmentscreate_id',
+        'quest_answers_id',
         'data_inicio',
     ];
 
@@ -27,8 +27,12 @@ class Assessment extends Model
         return $this->belongsTo(Form::class);
     }
 
-    public function assessmentsCreate(){
-        return $this->HasMany(assessmentsCreate::class);
+    public function client(){
+        return $this->belongsTo(Client::class);
+    }
+
+    public function questAnswers(){
+        return $this->HasMany(QuestAnswers::class);
     }
 
 }

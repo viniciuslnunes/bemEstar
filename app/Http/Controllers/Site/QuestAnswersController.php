@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\AnswerImages;
 use App\Assessment;
-use App\AssessmentCreate;
+use App\QuestAnswers;
 use App\Client;
+use App\Form;
 use App\QuestForm;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class AssessmentsCreateController extends Controller
+class QuestAnswersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +38,7 @@ class AssessmentsCreateController extends Controller
     {
         $assessment = Assessment::where("id", $id)->first();
         $form = QuestForm::where("id", $assessment->form_id)->first();
-        // $status = AssessmentCreate::where("status", $assessment->status);
+        // $status = QuestAnswers::where("status", $assessment->status);
         $client = Client::where("id", $assessment->client_id)->first();
         $questions = QuestForm::where("form_id", $assessment->form_id)->get();
 
@@ -45,6 +47,7 @@ class AssessmentsCreateController extends Controller
         $data = [
             "questions" => $questions, 
             "client" => $client,
+            'form_id' => $form->id
         ];
 
         return view('site.atendimento.create', $data);
@@ -60,20 +63,35 @@ class AssessmentsCreateController extends Controller
     {
         request()->validate([
             'status' => ['required', 'boolean'],
-            'assessments_create.*.nota' => ['required',  'max:10'],
-            'assessments_create.*.answer' => ['required', 'max:250'],
+            'answers.*.nota' => ['required',  'max:10'],
+            'answers.*.answer' => ['required', 'max:250'],
             'image' => ['max:150'],
         ]);
         
         $createassessment = $request->all();
 
-        foreach($createassessment['assessments_create'] as $assessment){
-            // dd($assessment['image']->getClientOriginalName());
-            Storage::putFileAs('public/img-avaliacoes', $assessment["image"], $assessment['image']->getClientOriginalName());
-            AssessmentCreate::create($assessment);
+        foreach($createassessment['answers'] as $answer) {
+            $answer = QuestAnswers::create([
+                'nota' => $answer['nota'],
+                'quest_id' => $answer['quest_id'],
+                'answer' => $answer['answer'],
+            ]);
+
+            if (count($answer['images']) > 0) {
+                foreach ($answer['images'] as $image) {
+                    Storage::putFileAs('public/img-avaliacoes', $image, $image->getClientOriginalName());
+
+                    AnswerImages::create([
+                        'answer_id' => $answer->id,
+                        'image' => $image->getClientOriginalName()
+                    ]);
+                }
+            }
         }
-        AssessmentCreate::create($createassessment);
-        return redirect()->route('avaliacoes.index')->with('success', 'Avaliação cadastrada com sucesso');
+
+        Form::find($request->form_id)->update(['status' => $request->status]);
+
+        return redirect()->route('avaliacoes.index')->with('success', 'Atendimento cadastrado com sucesso');
     }
 
     /**
@@ -84,8 +102,10 @@ class AssessmentsCreateController extends Controller
      */
     public function show($id)
     {
-        $createassessment = AssessmentCreate::find($id);
-        return view('site.atendimento.show');
+        $assessment = Assessment::find($id);
+        $assessment->load('form.questForm.answer.images', 'client');
+
+        return view('site.atendimento.show', compact('assessment'));
     }
 
     /**
@@ -96,7 +116,7 @@ class AssessmentsCreateController extends Controller
      */
     public function edit($id)
     {
-        $createassessment = AssessmentCreate::find($id);
+        $createassessment = QuestAnswers::find($id);
         return view('site.atendimento.edit', compact('createassessment'));
     }
 
@@ -109,7 +129,7 @@ class AssessmentsCreateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $createassessment = AssessmentCreate::find($id);
+        $createassessment = QuestAnswers::find($id);
         request()->validate([
             'status' => ['required', 'boolean'],
             'nota' => ['required',  'max:10'],
@@ -126,9 +146,9 @@ class AssessmentsCreateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, AssessmentCreate $assessmentCreate)
+    public function destroy(Request $request, QuestAnswers $questAnswer)
     {
-        $assessmentCreate->delete();
+        $questAnswer->delete();
         return redirect()->route('avaliacoes.index')->with('success', 'Cliente deletado com sucesso');    
     }
 }

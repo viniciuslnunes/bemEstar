@@ -11,7 +11,8 @@ class Form extends Model
 
     protected $fillable = [
         'nome_formulario',
-        'item'
+        'item',
+        'status'
     ];
 
     public function assessments(){

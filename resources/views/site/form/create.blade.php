@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('title', 'Bem estar - Criação de formulario')
 @section('script_head')
-<script src="{{ asset('js/form.js') }}" type="text/javascript"></script>
 @endsection
 @section('content')
 <div class="card">

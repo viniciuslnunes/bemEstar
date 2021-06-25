@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AssessmentCreate extends Model
+class QuestAnswers extends Model
 {
 
-    protected $table = "assessments_create";
+    protected $table = "quest_answers";
 
     protected $fillable = [
         'quest_id',
-        'status',
         'nota',
-        'answer',
-        'image',
+        'answer'
     ];
 
     protected $dates = [
@@ -23,6 +21,11 @@ class AssessmentCreate extends Model
 
     public function assessment(){
         return $this->belongsTo(Assessment::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(AnswerImages::class, 'answer_id');
     }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormsTable extends Migration
+class CreateAnswersImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('answers_images', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_formulario', 100);
-            $table->string('item', 150);
-            $table->boolean('status')->nullable();
+            $table->unsignedBigInteger('answer_id');
+            $table->foreign('answer_id')->references('id')->on('quest_answers')->onDelete('cascade');
+            $table->string('image', 150)->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('answers_images');
     }
 }

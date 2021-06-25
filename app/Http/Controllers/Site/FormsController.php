@@ -112,11 +112,22 @@ class FormsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $forms = Form::find($id);
         request()->validate([
             'nome_formulario' => ['required',  'max:100'],
         ]);
-        $forms->update($request->all());
+
+        $form = Form::find($id);
+        $form->update($request->all());
+
+        $form->load('questForm');
+
+        foreach ($request->quests as $i => $quest) {
+            QuestForm::find($i)->update([
+                'quest' => $quest,
+                'form_id' => $id
+            ]);
+        }
+
         return redirect()->route('formularios.index')->with('success', 'Cliente atualizado com sucesso');
     }
 

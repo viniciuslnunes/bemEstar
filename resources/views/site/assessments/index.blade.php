@@ -21,21 +21,22 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($avaliacoes as $cliente)
+        @foreach($avaliacoes as $avaliacao)
         <tr>
-            <td>{{$cliente->nome_empresa}}</td>
-            <td>{{$cliente->nome_responsavel}}</td>
-            <td>{{$cliente->nome_formulario}}</td>
-            <td>{{date('d/m/Y', strtotime($cliente->data_inicio))}}</td>
-            <td>{{$cliente->status}}</td>
+            <td>{{$avaliacao->client->nome_empresa}}</td>
+            <td>{{$avaliacao->client->nome_responsavel}}</td>
+            <td>{{$avaliacao->form->nome_formulario}}</td>
+            <td>{{date('d/m/Y', strtotime($avaliacao->data_inicio))}}</td>
+            <td>{{ $avaliacao->form->status === 0 ? 'Finalizado' : 'Em Andamento' }}</td>
             <td>
-            <form action="{{ route('clientes.destroy', $cliente->id)}}" method="post">
-                    <a href="{{ route('clientes.show', $cliente->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
-                    <a href="{{ route('clientes.edit', $cliente->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
-                </form>
+           
+            <form action="{{ route('avaliacoes.destroy', $avaliacao->id)}}" method="post">
+            <a href="{{ route('atendimento.show', $avaliacao->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
+            <a href="{{ route('avaliacoes.edit', $avaliacao->id)}}" class="btn btn-primary btn-sm">Editar</a>
+                @csrf
+                @method('DELETE')
+                <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
+            </form>
             </td>
             <td>#</td>
         </tr>

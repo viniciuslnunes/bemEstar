@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Assessment;
-use App\AssessmentCreate;
-use App\Avaliacoes;
 use App\Client;
 use App\Form;
-use App\QuestForm;
-use App\QuestsAssessment;
-use CreateAssessmentsTable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -25,7 +20,9 @@ class AssessmentsController extends Controller
      */
     public function index()
     {   
-        $avaliacoes = Avaliacoes::all();
+        $avaliacoes = Assessment::all();
+        $avaliacoes->load('form', 'client');
+
         return view("site.assessments.index" , compact("avaliacoes"));
     }
 

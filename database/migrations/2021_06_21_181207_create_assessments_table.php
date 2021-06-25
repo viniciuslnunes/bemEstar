@@ -23,9 +23,6 @@ class CreateAssessmentsTable extends Migration
             $table->unsignedBigInteger('form_id');
             $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
 
-            $table->unsignedBigInteger('assessmentscreate_id')->nullable();
-            $table->foreign('assessmentscreate_id')->references('id')->on('assessments_create')->onDelete('cascade');
-
             $table->date('data_inicio');
             
             $table->timestamps();
