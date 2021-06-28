@@ -25,7 +25,7 @@ class QuestAnswers extends Model
 
     public function images()
     {
-        return $this->hasMany(AnswerImages::class, 'answer_id');
+        return $this->hasMany(AnswerImages::class, 'answer_id', 'id');
     }
 
 }

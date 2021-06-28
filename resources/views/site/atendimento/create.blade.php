@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-lg-12">
                     <label for="image">Imagem</label>
-                    <input type="file" id="image" class="form-control" name="answers[{{$loop->iteration}}][images][]" />
+                    <input type="file" accept="image/*" id="image" class="form-control"  name="answers[{{$loop->iteration}}][images][]" multiple/>
                 </div>
             </div>
             @endforeach

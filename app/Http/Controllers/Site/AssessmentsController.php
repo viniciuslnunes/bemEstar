@@ -82,7 +82,10 @@ class AssessmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $forms = Form::find($id);   
+        $forms->load('questForm');      
+
+        return view('site.form.edit', compact('forms'));
     }
 
     /**
@@ -94,7 +97,7 @@ class AssessmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -105,7 +108,9 @@ class AssessmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $assessment = Assessment::find($id);
+        $assessment->delete();
+        return redirect()->route('avaliacoes.index')->with('success', 'Atendimento deletado com sucesso');    
     }
 
     public function question($id){

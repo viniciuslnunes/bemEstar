@@ -71,21 +71,21 @@ class QuestAnswersController extends Controller
         $createassessment = $request->all();
 
         foreach($createassessment['answers'] as $answer) {
-            $answer = QuestAnswers::create([
+            $questanswer = QuestAnswers::create([
                 'nota' => $answer['nota'],
                 'quest_id' => $answer['quest_id'],
                 'answer' => $answer['answer'],
             ]);
-
             if (count($answer['images']) > 0) {
                 foreach ($answer['images'] as $image) {
                     Storage::putFileAs('public/img-avaliacoes', $image, $image->getClientOriginalName());
 
                     AnswerImages::create([
-                        'answer_id' => $answer->id,
+                        'answer_id' => $questanswer->id,
                         'image' => $image->getClientOriginalName()
                     ]);
                 }
+
             }
         }
 
@@ -104,7 +104,7 @@ class QuestAnswersController extends Controller
     {
         $assessment = Assessment::find($id);
         $assessment->load('form.questForm.answer.images', 'client');
-
+        dd($assessment);
         return view('site.atendimento.show', compact('assessment'));
     }
 
