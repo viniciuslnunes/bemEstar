@@ -110,7 +110,7 @@
                         <li> <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block"><i class="zmdi zmdi-folder"></i><span>Atendimentos</span> </a>
                             <ul class="ml-menu">
                                 <li><a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Atendimento</a></li>
-                                <li><a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Atendimento</a></li>
+                                <li><a class="nav-link" href="{{ route('avaliacoes.create') }}">Novo Atendimento</a></li>
 
                             </ul>
                         </li>
@@ -163,7 +163,9 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                    <h2>Sistema Bem Estar</h2>
+                <div class="header">
+                        <h2>@yield('subtitle')</h2>
+                        </div>  
                 </div>
             </div>
         </div>
@@ -171,9 +173,7 @@
             <div class="row clearfix">
                 <div class="col-sm-12 ">
                     <div class="card" id="documenter_cover">
-                        <div class="header">
-                        <h2>@yield('subtitle')</h2>
-                        </div>
+
                         <div class="body">
                             <section class="">
                                 @yield('content')
