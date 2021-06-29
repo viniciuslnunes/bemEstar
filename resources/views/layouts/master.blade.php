@@ -18,70 +18,191 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="{{ asset('js/form.js') }}" type="text/javascript"></script>
 
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- Custom Css -->
+    <style>
+        #features li,
+        #documenter_cover li,
+        #template li {
+            padding: 5px 0;
+        }
+
+        .sidebar .menu .list a {
+            padding: 10px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('css/color_skins.css')}}">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" /> -->
+
     <title>@yield('title')</title>
     @yield('script_head')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
-<body>
+<body class="theme-green">
 
-    <nav class="navbar navbar-expand-md navbar-light bg-dark text-white shadow-sm">
-        <li class="navbar navbar-expand-md navbar-light bg-dark text-white shadow-sm nav-item dropdown">
-                                <a id="navbarDropdown" style="color:white"  class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                  Bem vindo(a), {{ auth()->user()->name ?? 'Convidado' }}
-                                
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img class="zmdi-hc-spin" src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" width="48" height="48" alt="Oreo"></div>
+            <p>Carregando...</p>
+        </div>
+    </div>
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- Top Bar -->
+    <nav class="navbar p-l-5 p-r-5">
+        <ul class="nav navbar-nav navbar-left" style="
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+">
+            <li>
+                <div class="navbar-header">
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <a class="navbar-brand" href="{{ route('clientes.index') }}"><img src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" width="30" alt="Oreo"><span class="m-l-10" style="font-weight: bold; text-shadow: 1px 2px 1px #000, 9px 0px 0px rgb(0 0 0 / 5%);"><span style="color:green">BEM</span><span style="color:orange">ESTAR</span></span></a>
+                </div>
+            </li>
+            <li class="float-right">
+                <a class="mega-menu" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                    <i class="zmdi zmdi-power"></i>
+                </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('clientes.create') }}">Cadastrar Cliente</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('formularios.index') }}">Formulários</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('formularios.create') }}">Novo Formulário</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Atendimento</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Atendimento</a>
-                </li>
-                <form id="logout-form" action="{{ route('clientes.index') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-            </ul>
-        </div>
+                <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+            </li>
+        </ul>
     </nav>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <div class="tab-content">
+            <div class="tab-pane stretchRight active" id="dashboard">
+                <div class="menu">
+                    <ul class="list">
+                        <li>
+                            <div class="user-info">
+                                <div class="detail" style="margin-top: 3rem;">
+                                    <h4>Bem vindo(a), {{ auth()->user()->name ?? 'Convidado' }}</h4>
+                                    <small>Consultoria Gastronômica</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="header">MENU</li>
+                        <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>Clientes</span> </a>
+                            <ul>
+                                <li><a href="{{ route('clientes.index') }}">Lista de Clientes</a></li>
+                                <li><a href="{{ route('clientes.create') }}">Cadastrar Cliente</a></li>
+                            </ul>
+                        </li>
 
-    <div class="container my-4">
-        @yield('content')
-    </div>
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-label-alt"></i><span>Formulários</span> </a>
+                            <ul class="ml-menu">
+                                <li> <a class="nav-link" href="{{ route('formularios.index') }}">Lista de Formulários</a></li>
+                                <li> <a class="nav-link" href="{{ route('formularios.create') }}">Cadastrar Formulário</a></li>
 
-    <script src="{{ asset('js/app.js') }}" type="text/js"></script>
+                            </ul>
+                        </li>
+                        <li> <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block"><i class="zmdi zmdi-folder"></i><span>Atendimentos</span> </a>
+                            <ul class="ml-menu">
+                                <li><a class="nav-link" href="{{ route('avaliacoes.index') }}">Lista de Atendimento</a></li>
+                                <li><a class="nav-link" href="{{ route('avaliacoes.create') }}">Nova Atendimento</a></li>
 
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <!-- Right Sidebar -->
+    <aside id="rightsidebar" class="right-sidebar">
+        <div class="tab-content">
+            <div class="tab-pane slideRight active" id="setting">
+                <div class="slim_scroll">
+                    <div class="card">
+                        <h6>Skins</h6>
+                        <ul class="choose-skin list-unstyled">
+                            <li data-theme="purple">
+                                <div class="purple"></div>
+                            </li>
+                            <li data-theme="blue">
+                                <div class="blue"></div>
+                            </li>
+                            <li data-theme="cyan">
+                                <div class="cyan"></div>
+                            </li>
+                            <li data-theme="green" class="active">
+                                <div class="green"></div>
+                            </li>
+                            <li data-theme="orange">
+                                <div class="orange"></div>
+                            </li>
+                            <li data-theme="blush">
+                                <div class="blush"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card theme-light-dark">
+                        <h6>Left Menu</h6>
+                        <button class="t-light btn btn-default btn-simple btn-round btn-block">Light</button>
+                        <button class="t-dark btn btn-default btn-round btn-block">Dark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </aside>
+
+    <!-- main content -->
+    <section class="content home">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+                    <h2>Sistema Bem Estar</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 ">
+                    <div class="card" id="documenter_cover">
+                        <div class="header">
+                        <h2>@yield('subtitle')</h2>
+                        </div>
+                        <div class="body">
+                            <section class="">
+                                @yield('content')
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="{{asset('js/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js ( jquery.v2.1.4.js ) -->
+    <script src="{{asset('js/vendorscripts.bundle.js')}}"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+    <script src="{{asset('js/mainscripts.bundle.js')}}"></script><!-- Custom Js -->
+    <script src="{{asset('js/index.js')}}"></script>
+
+    <script>
+        $('#leftsidebar .list li').click(function() {
+            var $this = $(this);
+            if (!$this.is('active open')) {
+                $('#leftsidebar .list li').removeClass('active open').removeData("top");
+                $this.addClass('active open').data("top", $this.offset().top);
+            }
+        });
+        document.createElement('section');
+        var duration = '500',
+            easing = 'swing';
+    </script>
 </body>
 
 </html>

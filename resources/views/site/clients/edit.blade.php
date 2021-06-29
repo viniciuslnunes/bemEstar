@@ -1,11 +1,10 @@
 @extends('layouts.master')
 @section('title', 'Bem estar - Editar cliente')
+@section('subtitle','Editar Cliente')
+
 
 @section('content')
 <div class="card">
-    <div class="card-header bg-dark">
-        Editar Cliente
-    </div>
     <div class="card-body">
 
         @if ($errors->any())

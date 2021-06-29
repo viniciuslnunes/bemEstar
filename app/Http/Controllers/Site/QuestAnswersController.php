@@ -47,7 +47,8 @@ class QuestAnswersController extends Controller
         $data = [
             "questions" => $questions, 
             "client" => $client,
-            'form_id' => $form->id
+            'form_id' => $form->id,
+            'assessment_id' => $assessment->id
         ];
 
         return view('site.atendimento.create', $data);
@@ -74,18 +75,21 @@ class QuestAnswersController extends Controller
             $questanswer = QuestAnswers::create([
                 'nota' => $answer['nota'],
                 'quest_id' => $answer['quest_id'],
+                'assessment_id' => $createassessment['assessment_id'],
                 'answer' => $answer['answer'],
             ]);
-            if (count($answer['images']) > 0) {
-                foreach ($answer['images'] as $image) {
-                    Storage::putFileAs('public/img-avaliacoes', $image, $image->getClientOriginalName());
 
-                    AnswerImages::create([
-                        'answer_id' => $questanswer->id,
-                        'image' => $image->getClientOriginalName()
-                    ]);
+            if (isset($answer['images'])) {
+                if (count($answer['images']) > 0) {
+                    foreach ($answer['images'] as $image) {
+                        Storage::putFileAs('public/img-avaliacoes', $image, $image->getClientOriginalName());
+    
+                        AnswerImages::create([
+                            'answer_id' => $questanswer->id,
+                            'image' => $image->getClientOriginalName()
+                        ]);
+                    }
                 }
-
             }
         }
 
@@ -103,8 +107,14 @@ class QuestAnswersController extends Controller
     public function show($id)
     {
         $assessment = Assessment::find($id);
-        $assessment->load('form.questForm.answer.images', 'client');
-        dd($assessment);
+        $assessment->load('form.questForm', 'client');
+
+        foreach ($assessment->form->questForm as $question) {
+            $answer = QuestAnswers::where('quest_id', $question->id)->where('assessment_id', $id)->first();
+            $question->setRelation('answer', $answer);
+            $question->answer->load('images');
+        }
+
         return view('site.atendimento.show', compact('assessment'));
     }
 

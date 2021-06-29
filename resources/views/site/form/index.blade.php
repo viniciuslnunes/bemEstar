@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+@section('subtitle','Lista de Formulários')
+
 
 <table class="table table-striped table-bordered">
     @if (Session::has('success'))

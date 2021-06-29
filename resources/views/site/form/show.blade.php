@@ -2,15 +2,14 @@
 @section('title','Detalhes do atendimento')
 
 @section('content')
+@section('subtitle','Detalhes do Formulário')
+
 <div class="card">
-    <div class="card-header bg-dark">
-        Detalhes do formulário
-    </div>
-    <div class="card-body">
+    <div class="card-body" style="min-height: 20px !important;">
         <table class="table">
             <tbody>
                 <tr>
-                    <td>Nome do formulário: {{$forms->nome_formulario}}</td>
+                    <td>Nome do formulário: <b>{{$forms->nome_formulario}}</b></td>
                 </tr>
             </tbody>
         </table>

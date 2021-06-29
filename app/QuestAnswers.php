@@ -11,6 +11,7 @@ class QuestAnswers extends Model
 
     protected $fillable = [
         'quest_id',
+        'assessment_id',
         'nota',
         'answer'
     ];

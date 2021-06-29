@@ -18,6 +18,8 @@ class CreateQuestAnswersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('quest_id');
             $table->foreign('quest_id')->references('id')->on('quest_forms')->onDelete('cascade');
+            $table->unsignedBigInteger('assessment_id');
+            $table->foreign('assessment_id')->references('id')->on('assessments')->onDelete('cascade');
             $table->integer('nota');
             $table->longText('answer', 250);
             $table->timestamps();

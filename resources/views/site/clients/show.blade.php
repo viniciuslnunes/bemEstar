@@ -1,11 +1,10 @@
 @extends('layouts.master')
-@section('title','Detalhes do cliente')
+@section('title','Detalhes do Cliente')
+@section('subtitle','Detalhes do Cliente')
+
 
 @section('content')
 <div class="card">
-    <div class="card-header bg-dark">
-        Detalhes do cliente
-    </div>
     <div class="card-body">
         <table class="table">
             <tbody>

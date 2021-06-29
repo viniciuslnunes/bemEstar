@@ -1,12 +1,10 @@
 @extends('layouts.master')
-@section('title', 'Bem estar - Criação de formulario')
+@section('title', 'Bem estar - Cadastrar Formulário')
+@section('subtitle','Cadastrar Formulário')
 @section('script_head')
 @endsection
 @section('content')
 <div class="card">
-    <div class="card-header bg-dark">
-        Adicionar formulário
-    </div>
     <div class="card-body">
 
         @if ($errors->any())

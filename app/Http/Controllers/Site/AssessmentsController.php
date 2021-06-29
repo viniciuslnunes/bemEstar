@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Assessment;
 use App\Client;
 use App\Form;
+use App\QuestAnswers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -82,10 +83,18 @@ class AssessmentsController extends Controller
      */
     public function edit($id)
     {
-        $forms = Form::find($id);   
-        $forms->load('questForm');      
+        $assessment = Assessment::find($id);
+        $assessment->load('form.questForm', 'client');
 
-        return view('site.form.edit', compact('forms'));
+        foreach ($assessment->form->questForm as $question) {
+            $answer = QuestAnswers::where('quest_id', $question->id)->where('assessment_id', $id)->first();
+            $question->setRelation('answer', $answer);
+            $question->answer->load('images');
+        }
+
+        $clientes = Client::all();
+
+        return view('site.assessments.edit', compact('assessment', 'clientes'));
     }
 
     /**

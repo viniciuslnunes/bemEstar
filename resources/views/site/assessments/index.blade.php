@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Bem estar - Lista de atendimento')
+@section('subtitle','Lista de atendimento')
+
 @section('content')
 <table class="table table-striped table-bordered">
 @if (Session::has('success'))

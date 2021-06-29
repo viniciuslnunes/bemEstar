@@ -1,5 +1,7 @@
 @extends('layouts.master')
-@section('title', 'Bem estar - Iniciar atendimento')
+@section('title', 'Bem estar - Iniciar Atendimento')
+@section('subtitle', 'Iniciar Atendimento')
+
 
 @section('content')
 <div class="card">
@@ -23,6 +25,7 @@
         <form method="POST" enctype="multipart/form-data" action="{{ route('atendimento.store') }}">
         @csrf
         <input type="hidden" name="form_id" value="{{ $form_id }}">
+        <input type="hidden" name="assessment_id" value="{{ $assessment_id }}">
         <div class="col mt-4">
                     <label for="status">Status</label>
                     <select class="custom-select" name="status">

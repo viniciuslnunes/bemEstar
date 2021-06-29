@@ -31,8 +31,8 @@ class Assessment extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function questAnswers(){
-        return $this->HasMany(QuestAnswers::class);
+    public function answer() {
+        return $this->hasMany(QuestAnswers::class, 'assessment_id', 'id');
     }
 
 }
