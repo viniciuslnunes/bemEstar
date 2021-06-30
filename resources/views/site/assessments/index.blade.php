@@ -4,10 +4,10 @@
 
 @section('content')
 <table class="table table-striped table-bordered">
-@if (Session::has('success'))
-        <div class="contact-form-success alert alert-success mt-4">
-            {{ Session::get('success') }}
-        </div>
+    @if (Session::has('success'))
+    <div class="contact-form-success alert alert-success mt-4">
+        {{ Session::get('success') }}
+    </div>
     @endif
     <!-- <img src="{{asset('storage/img-avaliacoes/daniel.PNG')}}" alt=""> -->
 
@@ -31,20 +31,22 @@
             <td>{{date('d/m/Y', strtotime($avaliacao->data_inicio))}}</td>
             <td>{{ $avaliacao->form->status === 0 ? 'Finalizado' : 'Em Andamento' }}</td>
             <td>
-           
-            <form action="{{ route('avaliacoes.destroy', $avaliacao->id)}}" method="post">
-            <a href="{{ route('atendimento.show', $avaliacao->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
-            <a href="{{ route('avaliacoes.edit', $avaliacao->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
-            </form>
+
+                <form action="{{ route('avaliacoes.destroy', $avaliacao->id)}}" method="post">
+                    <a href="{{ route('atendimento.show', $avaliacao->id)}}" class="btn btn-primary btn-sm">Detalhes</a>
+                    <a href="{{ route('avaliacoes.edit', $avaliacao->id)}}" class="btn btn-primary btn-sm">Editar</a>
+
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-sm" type="submit">Deletar</button>
+                </form>
             </td>
-            <td>#</td>
+            <td>
+                <a href="{{ route('avaliacoes.exportacao', ['extensao' => 'pdf'])}}" class="btn btn-primary btn-sm">PDF</a>
+            </td>
         </tr>
         @endforeach
     </tbody>
 </table>
 
 @endsection
-

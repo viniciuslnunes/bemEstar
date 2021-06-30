@@ -31,6 +31,8 @@ Route::post("/atendimento/update/{id}", "QuestAnswersController@update")->name("
 Route::get("/atendimento/destroy/{id}", "QuestAnswersController@destroy")->where('id', '[0-9]+')->name("atendimento.destroy");
 
 Route::resource('avaliacoes', 'AssessmentsController');
+Route::get('avaliacoes/export', 'AssessmentsController@exportacao')->name("avaliacoes.exportacao");
+
 Route::get('avaliacoes/criar-avaliacao/{id}', 'AssessmentsController@question')->name('avaliacoes.criar-avaliacao');
 });
 

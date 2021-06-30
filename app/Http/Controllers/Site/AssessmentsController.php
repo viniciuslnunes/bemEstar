@@ -125,4 +125,15 @@ class AssessmentsController extends Controller
     public function question($id){
         return view('site.assessments.createassessment');
     }
+
+    public function exportacao($extensao){
+        $nome_arquivo = 'Lista de atendimentos';
+        if($extensao == 'pdf'){
+            $nome_arquivo .= '.'.$extensao;
+        }
+        else{
+            return redirect()->route('avaliacoes.index');
+        }
+        return Excel::download(new AssessmentsExport, $nome_arquivo);
+    }
 }
