@@ -15208,10 +15208,10 @@ img {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-    border-radius: 50%;
+    border-radius: 5%;
     vertical-align: bottom !important;
     border: 3px solid #fff;
-    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2)
+    box-shadow: -1px 5px 10px 2px rgb(0 0 0 / 20%);
 }
 
 .sidebar .user-info .detail h4 {
@@ -16097,7 +16097,7 @@ img {
 }
 
 .m-b-10, .sidebar .user-info .detail, .top-report .progress, .w_calender ul:nth-of-type(6), .profile-page .profile-header .job_post {
-    margin-bottom: 50px
+    margin-bottom: 40px
 }
 
 .m-l-15, .navbar-nav.navbar-left .dropdown-menu ul.menu .media .media-body, .user_activity .b-accent {

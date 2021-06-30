@@ -1,79 +1,61 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="no-js " lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Bem Estar - Login</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('css/authentication.css')}}">
+    <link rel="stylesheet" href="{{asset('css/color_skins.css')}}">
 
-    <title>{{ config('app.name', 'Bem Estar') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" style="color:white" href="{{ url('/') }}">
-                    Bem Estar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Criar Conta') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+<body class="theme-green authentication sidebar-collapse">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
+        <div class="container">
+            <div class="navbar-collapse">
+                @if (Route::has('register'))
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                        <a class="nav-link btn btn-white btn-round" href="{{ route('login') }}">{{ __('Acessar') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-white btn-round" href="{{ route('register') }}">{{ __('Criar Conta') }}</a>
+                    </li>
+                </ul>
+                @endif
             </div>
-        </nav>
+        </div>
+    </nav>
+    <!-- End Navbar -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    @yield('content')
+
+    
+    <!-- Jquery Core Js -->
+    <script src="assets/bundles/libscripts.bundle.js"></script>
+    <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+
+    <script>
+        $(".navbar-toggler").on('click', function() {
+            $("html").toggleClass("nav-open");
+        });
+        //=============================================================================
+        $('.form-control').on("focus", function() {
+            $(this).parent('.input-group').addClass("input-group-focus");
+        }).on("blur", function() {
+            $(this).parent(".input-group").removeClass("input-group-focus");
+        });
+    </script>
 </body>
+
 </html>

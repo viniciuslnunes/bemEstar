@@ -53,17 +53,16 @@
     <div class="overlay"></div>
     <!-- Top Bar -->
     <nav class="navbar p-l-5 p-r-5">
+    <div class="navbar-header">
+                <a href="javascript:void(0);" class="bars" style=""></a>
+    </div>           
         <ul class="nav navbar-nav navbar-left" style="
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 ">
-            <li>
-                <div class="navbar-header">
-                    <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="{{ route('clientes.index') }}"><img src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" width="30" alt="Oreo"><span class="m-l-10" style="font-weight: bold; text-shadow: 1px 2px 1px #000, 9px 0px 0px rgb(0 0 0 / 5%);"><span style="color:green">BEM</span><span style="color:orange">ESTAR</span></span></a>
-                </div>
+            <li>    
             </li>
             <li class="float-right">
                 <a class="mega-menu" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -86,7 +85,8 @@
                     <ul class="list">
                         <li>
                             <div class="user-info">
-                                <div class="detail" style="margin-top: 3rem;">
+                                <div class="image mt-4"><a href="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" class=" waves-effect waves-block"><img src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" alt="User"></a></div>
+                                <div class="detail mt-2">
                                     <h4>Bem vindo(a), {{ auth()->user()->name ?? 'Convidado' }}</h4>
                                     <small>Consultoria Gastronômica</small>
                                 </div>
@@ -163,9 +163,9 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-12">
-                <div class="header">
+                    <div class="header">
                         <h2>@yield('subtitle')</h2>
-                        </div>  
+                    </div>
                 </div>
             </div>
         </div>

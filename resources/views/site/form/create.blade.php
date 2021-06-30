@@ -29,7 +29,7 @@
 
             </div>
             <div class="inputs mb-4">
-                <label for="">questões</label>
+                <label for="">Insira uma questão</label>
                 <div id="container-inputs">
                     <input type="text" id="input_quest" class="form-control" />
                 </div>
