@@ -615,7 +615,7 @@ pre code {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1400px;
+    max-width: 1140px;
   }
 }
 
@@ -4878,12 +4878,12 @@ input[type=button].btn-block {
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color:  white;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-  color: wheat;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -7074,7 +7074,6 @@ button.bg-light:focus {
 
 .bg-dark {
   background-color: #343a40 !important;
-  color: white;
 }
 
 a.bg-dark:hover,
@@ -10942,3 +10941,4 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+

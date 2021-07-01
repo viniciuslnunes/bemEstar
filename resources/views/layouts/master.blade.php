@@ -17,6 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="{{ asset('js/form.js') }}" type="text/javascript"></script>
+    <script defer src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- Custom Css -->
@@ -186,7 +187,7 @@
 
     <!-- Jquery Core Js -->
     <script src="{{asset('js/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js ( jquery.v2.1.4.js ) -->
-    <script src="{{asset('js/vendorscripts.bundle.js')}}"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+    <script src="{{asset('js/vendorscripts.bundle.js')}}"></script> slimscroll, waves Scripts Plugin Js
 
     <script src="{{asset('js/mainscripts.bundle.js')}}"></script><!-- Custom Js -->
     <script src="{{asset('js/index.js')}}"></script>
