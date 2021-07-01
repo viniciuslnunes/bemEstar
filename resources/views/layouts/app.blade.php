@@ -8,8 +8,8 @@
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
     <title>Bem Estar - Login</title>
-    <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="imagem/x-icon" href="https://marcasiteteste.com.br/bem-estar/images/icon.png">
     <!-- Custom Css -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -18,7 +18,7 @@
 
 </head>
 
-<body class="theme-green authentication sidebar-collapse">
+<body class="authentication sidebar-collapse off">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
         <div class="container">
@@ -26,11 +26,9 @@
                 @if (Route::has('register'))
                 <ul class="navbar-nav">
                 <li class="nav-item">
-                        <a class="nav-link btn btn-white btn-round" href="{{ route('login') }}">{{ __('Acessar') }}</a>
+                        <a class="nav-link btn btn-white btn-round" href="{{ route('login') }}">{{ __('LOGAR') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-white btn-round" href="{{ route('register') }}">{{ __('Criar Conta') }}</a>
-                    </li>
+                    
                 </ul>
                 @endif
             </div>

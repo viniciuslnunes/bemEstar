@@ -65,7 +65,7 @@
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary btn-round btn-lg btn-block waves-effect waves-light" type="submit" class="btn btn-primary">
-                            {{ __('Criar Conta') }}
+                            {{ __('Criar') }}
                         </button>
                     </div>
                 </form>

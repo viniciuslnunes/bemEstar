@@ -4324,7 +4324,7 @@ img {
 
 .authentication .card-plain {
     border-radius: .25rem;
-    padding-bottom: .7rem;
+    padding: 0 15px;
     max-width: 320px
 }
 
@@ -4333,7 +4333,7 @@ img {
 }
 
 .authentication .card-plain .logo-container {
-    width: 65px;
+    width: 140px;
     margin: 0 auto
 }
 
@@ -4370,14 +4370,14 @@ img {
 }
 
 .authentication .card-plain.card-plain .form-control {
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff
+    border-color: #F5821F;
+    color: #000
 }
 
 .authentication .card-plain.card-plain .form-control:focus {
-    border-color: #fff;
+    border-color: #8FB03C;
     background-color: transparent;
-    color: #fff
+    color: #000
 }
 
 .authentication .card-plain.card-plain .has-success:after, .authentication .card-plain.card-plain .has-danger:after {
@@ -4390,7 +4390,8 @@ img {
 
 .authentication .card-plain.card-plain .input-group-addon {
     background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: #F5821F;
+    border-left: solid 1px;
     color: #fff
 }
 
@@ -4436,7 +4437,7 @@ img {
 }
 
 .authentication .card-plain.card-plain .input-group-addon, .authentication .card-plain.card-plain .form-group.form-group-no-border .input-group-addon, .authentication .card-plain.card-plain .input-group.form-group-no-border .input-group-addon {
-    color: rgba(255, 255, 255, 0.5)
+    color: #F5821F;
 }
 
 .authentication .link {
@@ -4473,8 +4474,7 @@ img {
     padding: 0;
     color: #fff;
     position: relative;
-    background-position: center center;
-    background-size: cover
+    background: url(https://marcasiteteste.com.br/bem-estar/images/fundo.png) no-repeat 100% bottom;
 }
 
 .page-header .page-header-image {
@@ -4531,10 +4531,6 @@ img {
     left: 0;
     top: 0;
     content: ""
-}
-
-.page-header:before {
-    background-color: rgba(0, 0, 0, 0.4)
 }
 
 .page-header[filter-color="orange"] {
@@ -4902,10 +4898,9 @@ img {
         top: 0;
         height: 100% !important;
         width: 300px;
-        right: 0;
+        right: 300px;
         z-index: 1032;
         visibility: visible;
-        background-color: #999;
         overflow-y: visible;
         border-top: none;
         text-align: left;
@@ -4922,6 +4917,7 @@ img {
         transition: all .5s cubic-bezier(0.685, 0.0473, 0.346, 1)
     }
     .sidebar-collapse .navbar-collapse:before {
+        background-color: transparent !imporatnt;
         display: block;
         content: "";
         position: absolute;
@@ -14338,7 +14334,8 @@ img {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    text-align: center
+    text-align: center;
+    background: #000000cf !important;
 }
 
 .page-loader-wrapper p {
@@ -15204,14 +15201,8 @@ img {
 }
 
 .sidebar .user-info .image img {
-    width: 80px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 5%;
+    width: 90px;
     vertical-align: bottom !important;
-    border: 3px solid #fff;
-    box-shadow: -1px 5px 10px 2px rgb(0 0 0 / 20%);
 }
 
 .sidebar .user-info .detail h4 {
@@ -15352,12 +15343,11 @@ img {
 
 .sidebar .menu .list .ml-menu li a:before {
     content: '\f30f';
-    position: absolute;
-    left: 14px;
-    font-size: 12px;
+    font-size: 17px;
     font-family: 'Material-Design-Iconic-Font';
-    color: #999;
-    top: 8px
+    color: #f5821f;
+    margin-right: 10px;
+    margin-left: 14px;
 }
 
 .sidebar .menu .list .ml-menu li.active a.toggled:not(.menu-toggle) {
@@ -16093,7 +16083,8 @@ img {
 }
 
 .m-r-10, .ls-closed .bars:after, .ls-closed .bars:before, .right_chat .media .media-object {
-    margin-right: 10px
+    margin-right: 10px;
+    color:  #fff;
 }
 
 .m-b-10, .sidebar .user-info .detail, .top-report .progress, .w_calender ul:nth-of-type(6), .profile-page .profile-header .job_post {
@@ -16128,7 +16119,7 @@ img {
     margin-right: 20px
 }
 
-.m-b-20, .authentication .card-plain .logo-container, .media, .user_activity .b-accent .sl-item .sl-content, .weather .city, .w_calender ul:nth-of-type(5) {
+.m-b-20, .media, .user_activity .b-accent .sl-item .sl-content, .weather .city, .w_calender ul:nth-of-type(5) {
     margin-bottom: 20px
 }
 
@@ -21802,4 +21793,171 @@ section small {
     .file_manager .nav-tabs .nav-item {
         display: inline-block
     }
+}
+
+
+
+
+
+
+
+
+
+
+.theme-green .navbar{
+    background: transparent !important;
+}
+
+.theme-green.in .navbar{
+    background: #f5821f !important;
+}
+.theme-green.in section.content:before{
+    background: #8fb03c !important;
+}
+nav .navbar-nav a.btn{
+    border: solid 2px #f5821f;
+    background: #fff0;
+    color: #f5821f;
+    font-weight: 600;
+    transition: ease .8s all;
+}
+nav .navbar-nav a.btn:hover{
+    background: #f5821f;
+    color: #fff;
+}
+.form-check-label{
+    color: #f5821f;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    padding: 0;
+}
+.card-plain form .btn.btn-primary{
+    background: #8fb03c;
+    border: solid 1px #8fb03c;
+    color: #fff;
+    border-radius: 600px;
+    font-weight: 100;
+    font-size: 15px;
+    text-transform: uppercase;
+    transition: ease .8s all;
+}
+.card-plain form .btn.btn-primary:hover{
+    background: #ffffff;
+    color: #8fb03c;
+}
+.card-plain form .btn.btn-link{
+    color: #8fb03c !important;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 14px;
+    border-bottom: solid 2px #8fb03c00;
+    transition: ease .8s all;
+    padding: 8px;
+    border-radius: 0;
+    margin: 0;
+}
+.card-plain form .btn.btn-link:hover{
+    color: #F5821F !important;
+    border-bottom: solid 2px #8fb03c;
+}
+.card-plain h5{
+    color: #f5821f;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-family: inherit;
+}
+
+.authentication .card-plain.card-plain .form-control::placeholder{
+    color: #F5821F;
+}
+
+
+.theme-green .sidebar .menu .list li.active>:first-child i,
+.theme-green .sidebar .menu .list li.active>:first-child span,
+.theme-green .sidebar .menu .list a:hover{
+    color: #8fb03c !important ;
+}
+
+.theme-green .btn-primary{
+    background: #8fb03c !important ;
+    border-radius: 100px;
+    color:  #fff !important;
+    border: solid 2px #8fb03c;
+    transition: ease .8s all;
+}
+
+.theme-green .btn-primary:hover{
+    background: #fff !important ;
+    color: #8fb03c !important ;
+}
+.btn-danger{
+    background-color: #f5821f !important;
+    color: #fff !important;
+    border-radius: 100px !important;
+    border: solid 2px #f5821f;
+    transition: ease .8s all;
+}
+.btn-danger:hover{
+    background-color: #fff !important;
+    color: #f5821f !important;
+    border-color: #f5821f;
+}
+
+.page-header span{
+    color: #f5821f;
+}
+
+@media screen and (max-width: 1169px) {
+    .card .body section{ overflow-x: auto; }
+}
+
+.table-bordered thead td,
+.table-bordered thead th {
+    text-align: -webkit-center;
+}
+.sidebar .menu .list li::marker {
+    color: #f5821f;
+}
+
+.card .body section label{
+    margin-top: 15px;
+    color: #f5821f;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.card .body section input.form-control{
+    border: solid 2px #f96332;
+    font-size: 15px;
+    transition: ease .8s all;
+}
+.card .body section input.form-control:focus{
+    border: solid 2px #8fb03c;
+}
+
+.card .body section .btn-primary{
+    font-size: 15px;
+}
+
+.card .body section div.custom-select {
+    background: #0000;
+    border: none;
+    padding: 0;
+    width: 100%;
+}
+.card .body section div.custom-select button{
+    display: none !important;
+}
+.card .body section select.custom-select {
+    width: 100%;
+    border: solid 2px #f5821f;
+    border-radius: 100px;
+    transition: ease .8s all;
+    height: 42px;
+}
+.card .body section select.custom-select:focus {
+    border: solid 2px #8fb03c;
 }

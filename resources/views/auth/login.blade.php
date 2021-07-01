@@ -8,8 +8,8 @@
     <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
     <title>Bem Estar - Login</title>
-    <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="imagem/x-icon" href="https://marcasiteteste.com.br/bem-estar/images/icon.png">
     <!-- Custom Css -->
     <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="theme-green authentication sidebar-collapse">
+<body class="authentication sidebar-collapse">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent">
         <div class="container">
@@ -51,25 +51,27 @@
                             <h5>Acessar</h5>
                         </div>
                         <div class="content">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                             <div class="input-group input-lg">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+
                                 <span class="input-group-addon">
                                     <i class="zmdi zmdi-account-circle"></i>
                                 </span>
                             </div>
                             <div class="input-group input-lg">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+
                                 <span class="input-group-addon">
                                     <i class="zmdi zmdi-lock"></i>
                                 </span>
@@ -79,7 +81,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Manter autenticado') }}
+                                        {{ __('Manter conectado') }}
                                     </label>
                                 </div>
                             </div>

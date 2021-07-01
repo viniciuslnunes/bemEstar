@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon  -->
+    <link rel="shortcut icon" type="imagem/x-icon" href="https://marcasiteteste.com.br/bem-estar/images/icon.png">
+
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -17,7 +20,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <script src="{{ asset('js/form.js') }}" type="text/javascript"></script>
-    <script defer src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- Custom Css -->
@@ -41,13 +43,14 @@
 
 </head>
 
-<body class="theme-green">
+<body class="theme-green in">
 
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img class="zmdi-hc-spin" src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" width="48" height="48" alt="Oreo"></div>
-            <p>Carregando...</p>
+            <div class="m-t-30">
+                <img class="pulse" src="http://www.consultoriagastronomica.com.br/wp-content/uploads/2019/11/bem-estar-png.png" width="150" height="150" alt="Logo">
+            </div>
         </div>
     </div>
     <!-- Overlay For Sidebars -->
@@ -187,7 +190,7 @@
 
     <!-- Jquery Core Js -->
     <script src="{{asset('js/libscripts.bundle.js')}}"></script> <!-- Lib Scripts Plugin Js ( jquery.v2.1.4.js ) -->
-    <script src="{{asset('js/vendorscripts.bundle.js')}}"></script> slimscroll, waves Scripts Plugin Js
+    <script src="{{asset('js/vendorscripts.bundle.js')}}"></script> <!-- slimscroll, waves Scripts Plugin Js -->
 
     <script src="{{asset('js/mainscripts.bundle.js')}}"></script><!-- Custom Js -->
     <script src="{{asset('js/index.js')}}"></script>

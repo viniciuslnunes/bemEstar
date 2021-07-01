@@ -17,14 +17,15 @@
                         <span>Insira seu E-mail abaixo.</span>
                     </div>
                     <div class="content">
-                        <div class="input-group input-lg">
-                            <input id="email" placeholder="E-mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            
-                            @error('email')
+                    @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                        <div class="input-group input-lg">
+                            <input id="email" placeholder="E-mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            
+
 
                             <span class="input-group-addon">
                                 <i class="zmdi zmdi-email"></i>
